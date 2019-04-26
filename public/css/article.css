@@ -1,0 +1,357 @@
+/* .top */
+.top label{
+    color: #fff;
+    height: 35px;
+    padding: 0 20px;
+    line-height: 35px;
+    cursor: pointer;
+}
+.top label:hover{
+    opacity: 0.9;
+}
+
+
+/* nav */
+.nav{
+    height: 60px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.12);
+}
+.nav .logo a{
+    display: block;
+    line-height: 60px;
+    font-size: 28px;
+    color: red;
+    font-weight: 700;
+}
+.nav .search{
+    margin-top: 5px;
+}
+
+
+/* main */
+/* clo1 */
+.main{
+    margin-top: 20px;
+}
+#clo1-menu li{
+    width: 100px;
+    height: 40px;
+    border-bottom: 1px #e7e7e7 solid;
+}
+#clo1-menu a::before{
+    font-family: "icomoon";
+    content: "\e902";
+    font-size: 28px;
+    vertical-align: bottom;
+}
+#clo1-menu li a{
+    display: block;
+    width: 100px;
+    height: 40px;
+    color: #f75959;
+    line-height: 40px;
+    font-size: 20px;
+}
+#clo1-menu li a span{
+    padding-left: 10px;
+}
+
+
+/* clo2 */
+/* 内容、标题 */
+.bd-clo2{
+    padding: 0 20px 200px;
+    box-sizing: border-box;
+}
+.article h1{
+    margin-bottom: 15px;
+}
+.article .title span{
+    color: #767676;
+}
+.article .title span:first-child{
+    border: 1px #767676 solid;
+    font-size: 12px;
+}
+.article .p{
+    margin-top: 30px;
+}
+.article p{
+    color: #212121;
+    font-size: 16px;
+    margin-top: 15px;
+    line-height: 28px;
+}
+.article p i{
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: 20px 20px;
+    margin-right: 3px;
+    vertical-align: middle;
+    padding-top: -5px;
+    position: relative;
+    top: -2px;
+}
+.article img{
+    display: block;
+    width: 500px;
+    height: 400px;
+    margin: 30px auto;
+}
+
+
+/*评论*/
+/* mask */
+.comment_mask{
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+    margin: 50px auto;
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    color: red;
+    font-size: 18px;
+}
+.comment{
+    margin-top: 50px;
+    display: none;
+}
+.comment>span{
+    display: block;
+    width: 100px;
+    margin: 66px auto;
+}
+.comment-nums{
+    margin-bottom: 20px;
+}
+.comment-nums em{
+    color: #f75959;
+}
+.comment-nums span{
+    color: #65707f;
+    margin-left: 5px;
+    font-weight: 700;
+}
+.comment-write{
+    margin-bottom: 30px;
+    position: relative;
+}
+.comment-write img,
+.comment li img{
+    display: block;
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+    position: absolute;
+    left: 14px;
+    top: 0;
+}
+.comment-write textarea{
+    height: 50px;
+    width: 510px;
+    outline: none;
+    float: right;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #747474;
+    font-weight: bold;
+}
+.comment-write div{
+    height: 50px;
+    width: 120px;
+    background-color: #3e3f4b;
+    float: right;
+    color: #fff;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.comment li{
+    border-top: 1px #eee solid;
+    position: relative;
+    padding: 15px 0;
+}
+.comment li>div{
+    margin-left: 70px;
+}
+.comment li img{
+    top: 15px;
+}
+.comment dl dt a{
+    color: #4065a5;
+    margin-right: 10px;
+}
+.comment dl dt a:last-child{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #aaa;
+}
+.comment dl dt a:last-child::after{
+    font-family: "icomoon";
+    content: "\e903";
+    color: #aaa;
+
+}
+.comment dl dt{
+    color: #76768c;
+    position: relative;
+}
+.comment dl dd{
+    margin-top: 10px;
+}
+.comment dl dd b{
+    color: #406598;
+    cursor: pointer;
+    position: relative;
+}
+.comment dl dd b:nth-child(2):before{
+    font-family: 'icomoon';
+    content: "\ea51";
+    position: absolute;
+    right: -15px;
+    top: 0;
+}
+.comment dl dd .comment-write{
+    margin: 10px 0;
+}
+.box-hf{
+    display: none;
+}
+/*回复*/
+.reply-content{
+    position: relative;
+    padding-left: 50px;
+    margin-top: 20px;
+    display: none;
+}
+.reply-content img{
+    left: 0 !important;
+    top: 0 !important;
+}
+/*赞*/
+#comment_zan.active{
+    color: orange
+}
+#comment_zan.active::after{
+    color: orange
+}
+#reply_zan.active{
+    color: orange
+}
+#reply_zan.active::after{
+    color: orange
+}
+
+
+
+
+
+/* clo3 */
+
+/* 作者 */
+.author{
+    padding: 0 20px;
+    height: 300px;
+}
+.author dt{
+    height: 80px;
+    border-bottom: 1px solid #ddd;
+}
+.author-avatar{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 15px 15px 0 0;
+}
+.author-avatar img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.author-message{
+    float: left;
+}
+.author-message a{
+    display: block;
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    width: 195px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #212121;
+}
+.author-message button{
+    margin-top: 3px;
+    display: block;
+    border: 0;
+    outline: none;
+    width: 60px;
+    height: 20px;
+    background: #228ed8;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+}
+.author-message button::before{
+    content: '+ 关注'
+}
+.author-message button.active{
+    background: skyblue;
+    color: #212121;
+}
+.author-message button.active::before{
+    content: '√ 已关注'
+}
+.author dd{
+    font-size: 14px;
+    margin: 10px 0;
+    position: relative;
+    padding-left: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 40px;
+}
+.author dd a{
+    color: #212121
+}
+.author dd:last-child{
+    padding-bottom: 20px;
+}
+.author dd::before{
+    content: '■';
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    left: 0;
+    top: -2px;;
+}
+.author dd a:hover{
+    color: #c90d16
+}
+
+
+
+/* 24小时热闻 */
+.hotnews{
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/* toolbar */
+.toolbar{
+    height: 40px;
+}

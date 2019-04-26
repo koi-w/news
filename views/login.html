@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../public/css/base.css">
+    <link rel="stylesheet" href="../public/css/login.css">
+</head>
+
+<body>
+
+    <a class="toindex" href="/">&lt;新闻资讯</a>
+    <img src="../public/img/sysimages/login_bg1.png" alt="">
+    <div class="user-box">
+        <form id="login_form">
+            <span class="username-ico"></span>
+            <input type="text" name="email" id="username-inp" class="username" placeholder="email" maxlength="50">
+            <span class="password-ico"></span>
+            <input type="password" name="password" id="password-inp" class="password" placeholder="password" maxlength="20">
+            <p>登录即表示你同意本站 <i>用户协议</i>和<i>隐私条款</i> </p>
+            <label for="" id="tip" ></label>
+            <input type="submit" value="登录">
+        </form>
+        <a href="/register">没注册? 去注册</a>
+        <div class="close"></div>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/login.js"></script>
+</body>
+
+</html>

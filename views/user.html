@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户主页</title>
+    <link rel="shortcut icon" href="../public/favicon.ico">
+    <link rel="stylesheet" href="../public/css/base.css">
+    <link rel="stylesheet" href="../public/css/public.css">
+    <link rel="stylesheet" href="../public/css/user.css">
+</head>
+<body>
+    <!-- 头部 -->
+    {{if user}}
+    <div id="top" class="top">
+        <ul>
+            <li><a href="#">头条</a></li>
+            <li><a href="#">社会</a></li>
+            <li><a href="#">国内</a></li>
+            <li><a href="#">国际</a></li>
+            <li><a href="#">娱乐</a></li>
+            <li><a href="#">体育</a></li>
+            <li><a href="#">军事</a></li>
+            <li><a href="#">科技</a></li>
+            <li><a href="#">财经</a></li>
+            <li><a href="#">时尚</a></li>
+        </ul>
+        <div class="user-mini fr">
+            <a href="#">
+                <img src="../public/img/userhead/{{user.avatar}}" alt="">
+                <span>{{ user.nickname }}</span>
+            </a>
+            <ul class="user-mini-menu clearfix">
+                <li><a href="#">我的收藏</a></li>
+                <li><a href="#">我的关注</a></li>
+                <li><a href="#">我的粉丝</a></li>
+                <li><a href="/logout">退出</a></li>
+                <i></i>
+            </ul>
+        </div>
+    </div>
+    <!-- search -->
+    <div class="user-search">
+        <div class="w2">
+            <h2><a href="/">新闻资讯</a></h2>
+            <div class="search-box">
+                <input type="text" name="" id="">
+                <i></i>
+            </div>
+        </div>
+    </div>
+    <!-- nav -->
+    <div class="nav w2">
+        <a href="/"><img src="../public/img/sysimages/user_bg.png" alt=""></a>
+        <div class="nav-foot">
+            <a id="modify_avatar" href="javascript:void(0)"><img src="../public/img/userhead/{{user.avatar}}" alt=""></a>
+            <ul>
+                <li class="fl">
+                    <p>{{user.nickname}}</p>
+                    <div>
+                        <span id="modify_data">编辑资料</span>
+                        <span id="modify_psd">修改密码</span>
+                    </div>
+                </li>
+                <li class="fr"><button>发布图文</button></li>
+            </ul>
+        </div>
+    </div>
+    <!-- main -->
+    <div class="main w2 clearfix">
+        <div class="clo-1 fl">
+            <div class="tab">
+                <ul>
+                    <li class="active">视频</li>
+                    <li>收藏</li>
+                </ul>
+            </div>
+            <div class="content">
+                暂无内容
+            </div>
+        </div>
+        <div class="clo-2 fr">
+            <ul>
+                <li><a href=""><p>{{user.attentions}}</p>关注</a></li>
+                <li><a href=""><p>{{user.fans}}</p>粉丝</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <p style="text-align: center;">在线新闻资讯♚♚♚☆ω★♥ && 💥௸ོ࿆   南宫十八廷༊💥</p>
+    </div>
+
+    <!-- mask -->
+    <!-- mask-修改资料 -->
+    <div class="mask_modify">
+        <div class="mask_box">
+            <s class="close"></s>
+            <form id="modify_data_form">
+            <div>
+                <label for="">账号ID:</label>
+                <span>{{user._id}}</span>
+            </div>
+            <div>
+                <label for="">用户名:</label>
+                <input type="text" name="nickname"  value="{{user.nickname}}">
+            </div>
+            <div>
+                <label for="">性别:</label>
+                {{if user.gender === 2}}
+                <input type="radio" name="gender"  value="1">&nbsp;&nbsp;男&nbsp;&nbsp;
+                <input type="radio" name="gender"  value="2" checked>&nbsp;&nbsp;女
+                {{else}}
+                <input type="radio" name="gender"  value="1" checked>&nbsp;&nbsp;男&nbsp;&nbsp;
+                <input type="radio" name="gender"  value="2">&nbsp;&nbsp;女
+                {{/if}}
+            </div>
+            <div>
+                <label for="">出生年月:</label>
+                <input type="date" name="birthday" value="{{user.birthday}}">
+            </div>
+            <div>
+                <label for="">简要:</label>
+                <textarea name="bio">{{user.bio}}</textarea>
+            </div>
+            <div><input type="submit" value="提交"></div>
+            </form>
+        </div>
+    </div>
+    <!-- mask-修改头像 -->
+    <div class="mask_avatar">
+        <div class="mask_box">
+            <s class="close"></s>
+            <i>支持格式 jpg、png,大小不能超过2M</i>
+            <img src="../public/img/userhead/{{user.avatar}}" alt="">
+            <form action="" id="avatar_form" enctype="multipart/form-data">
+            <input type="hidden" name="_id" value="{{user._id}}">
+            <em>上传头像</em>
+            <input type="file" id="avatar_file" accept="images/*">
+            <input type="submit" id="avatar_sub" value="提交">
+            </form>
+        </div>
+    </div>
+    <!-- mask-修改密码 -->
+    <div class="mask_psd">
+        <div class="mask_box">
+            <s class="close"></s>
+            <form id="modify_psd_form">
+            <div>
+                <label for="">我的邮箱</label>
+                <input type="text" name="" value="{{user.email}}" disabled='disabled'>
+            </div>
+            <p>&nbsp;</p>
+            <div>
+                <label for="">旧密码</label>
+                <input type="password" name="oldpsd" id="old_psd"  autocomplete="off" placeholder="请输入旧密码"  maxlength="20">
+            </div>
+            <p id="old_psd_tip">&nbsp;</p>
+            <div>
+                <label for="">设置新密码</label>
+                <input type="password" name="password" id="new_psd"  autocomplete="off" placeholder="建议使用两种或两种以上字符组合" maxlength="20">
+            </div>
+            <p id="new_psd_tip">建议使用字母、数字和符号两种及以上的组合，6-20个字符</p>
+            <div>
+                <label for="">确认密码</label>
+                <input type="password" name="" id="sure_psd" autocomplete="off" placeholder="请再次输入密码" maxlength="20">
+            </div>
+            <p id="sure_psd_tip">请再次输入密码</p>
+            <input type="submit" value="提交">
+            </form>
+        </div>
+    </div>
+    {{/if}}
+
+
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/user.js"></script>
+</body>
+</html>

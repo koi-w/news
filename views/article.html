@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" href="../public/favicon.ico">
+    <link rel="stylesheet" href="../public/css/base.css">
+    <link rel="stylesheet" href="../public/css/public.css">
+    <link rel="stylesheet" href="../public/css/article.css">
+
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div id="top" class="top">
+        {{ if user }}
+        <div class="user-mini fr">
+            <a href="/user">
+                <img src="../public/img/userhead/{{ user.avatar }}" alt="">
+                <span>{{user.nickname}}</span>
+            </a>
+            <ul class="user-mini-menu clearfix">
+                <li><a href="#">我的收藏</a></li>
+                <li><a href="#">我的关注</a></li>
+                <li><a href="#">我的粉丝</a></li>
+                <li><a href="#">退出</a></li>
+                <i></i>
+            </ul>
+        </div>
+        <label for="" class="fr">发布</label>
+        {{ else }}
+        <a href="/login" class="article_login fr">登录</a>
+        {{ /if }}
+    </div>
+    <!-- nav -->
+    <div class="nav">
+        <div class="w">
+            <ul>
+                <li class="logo fl">
+                    <a href="/">新闻资讯</a>
+                </li>
+                <li class="fr">
+                    <!-- 搜索 -->
+                    <div class="search">
+                        <form action="" name="" method="GET">
+                            <input type="text" name="" id="">
+                            <input type="submit" value="搜索">
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- content -->
+    <div class="main w">
+        {{ if article}}
+        <div class="bd-clo1">
+            <ul id="clo1-menu">
+                <li><a href="#toComment"><span>{{ article.comment_num }}</span></a></li>
+            </ul>
+        </div>
+        <div class="bd-clo2">
+            <!-- 正文 -->
+            <div class="article">
+                <h1>{{ article.title }}</h1>
+                <div class="title">
+                    <span>{{ article.category }}</span>&nbsp;
+                    <span>{{ article.author_name }}</span>&nbsp;·
+                    <span>{{ article.release_time }}</span>&nbsp;
+                    <span>{{ article.read_num }}阅读</span>
+                </div>
+                <div class="p">{{ article.content }} </div>
+                {{ each article.pic_arr value i }}
+                <img src="../public/img/picture/{{value}}" alt="">
+                {{ /each }}
+            </div>
+            <!-- 查看评论 -->
+            <input type="hidden" name="" id="article_id" value="{{ article._id }}">
+            <div class="comment_mask">查看评论</div>
+            <!-- 评论 -->
+            <div class="comment">
+                <div id="toComment" class="comment-nums"><em>{{ article.comment_num }}</em><span>条品论</span></div>
+                <div class="comment-write clearfix">
+                    {{ if user }}
+                    <img src="../public/img/userhead/{{user.avatar}}" alt="">
+                    {{ else }}
+                    <img src="../public/img/userhead/default_comment.png" alt="">
+                    {{ /if }}
+                    <div class="div-pl">评论</div>
+                    <textarea name="" id="comment-input" placeholder="写下您的评论" maxlength="150"></textarea>
+                </div>
+                <span>暂无评论</span>
+                <ul></ul>
+            </div>
+        </div>
+        <div class="bd-clo3">
+            <!-- 作者 -->
+            <div class="author hotnews">
+                <dl>
+                    <dt>
+                        <div class="author-avatar">
+                            <a href="#"><img src="../public/img/userhead/{{ article.author_avatar }}" alt=""></a>
+                        </div>
+                        <div class="author-message">
+                            <a href="">{{ article.author_name }}</a>
+                            <button id="concern"></button>
+                        </div>
+                    </dt>
+                    <input type="hidden" id="author_articles" value="{{ article.author_id }}">
+                    {{ each author_articles }}
+                    <dd><a href="/article?id={{ $value._id }}">{{ $value.title }}</a></dd>
+                    {{ /each }}
+                </dl>
+            </div>
+            {{ /if }}
+            <!-- 24小时热闻 -->
+            <div class="hotnews clearfix">
+                <p>24小时热闻</p>
+                <ul>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- 精彩图片 -->
+            <div class="hotpics hotnews clearfix">
+                <p>精彩图片</p>
+                <ul>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- 友情连接 -->
+            <div class="friend-link hotnews clearfix">
+                <p>友情链接</p>
+                <ul class="friend-link-content">
+                    <li><a target="_blank" href="http://www.gmw.cn/">光明网</a></li>
+                    <li><a target="_blank" href="http://www.cnr.cn/">央广网</a></li>
+                    <li><a target="_blank" href="http://www.cri.cn">国际在线</a></li>
+                    <li><a target="_blank" href="http://www.tibet.cn/">中国西藏网</a></li>
+                    <li><a target="_blank" href="http://www.cankaoxiaoxi.com/">参考消息</a></li>
+                    <li><a target="_blank" href="http://www.huanqiu.com/">环球网</a></li>
+                    <li><a target="_blank" href="http://www.cyol.com">中青在线</a></li>
+                    <li><a target="_blank" href="http://www.youth.cn/">中青网</a></li>
+                    <li><a target="_blank" href="http://www.haiwainet.cn/">海外网</a></li>
+                    <li><a target="_blank" href="http://h5.china.com.cn">中国网</a></li>
+                    <li><a target="_blank" href="http://www.k618.cn/">未来网</a></li>
+                    <li><a target="_blank" href="http://qianlong.com/">千龙网</a></li>
+                    <li><a target="_blank" href="http://www.bjnews.com.cn/">新京报</a></li>
+                    <li><a target="_blank" href="http://www.ynet.com/">北青网</a></li>
+                    <li><a target="_blank" href="http://www.fawan.com/">法制晚报</a></li>
+                    <li><a target="_blank" href="http://www.morningpost.com.cn">北京晨报</a></li>
+                    <li><a target="_blank" href="http://www.bbtnews.com.cn/">北京商报</a></li>
+                    <li><a target="_blank" href="http://www.stardaily.com.cn/">北京娱乐信报</a></li>
+                    <li><a target="_blank" href="http://www.oeeee.com/">奥一网</a></li>
+                    <li><a target="_blank" href="http://www.ycwb.com/">金羊网</a></li>
+                    <li><a target="_blank" href="http://www.hsw.cn/">华商网</a></li>
+                    <li><a target="_blank" href="http://www.xinmin.cn">新民网</a></li>
+                    <li><a target="_blank" href="http://www.rednet.cn/index.html">红网</a></li>
+                    <li><a target="_blank" href="http://www.jschina.com.cn">中国江苏网</a></li>
+                    <li><a target="_blank" href="http://www.jxnews.com.cn/">中国江西网</a></li>
+                    <li><a target="_blank" href="http://www.iqilu.com/">齐鲁网</a></li>
+                    <li><a target="_blank" href="http://www.hinews.cn/news/">南海网</a></li>
+                    <li><a target="_blank" href="http://www.ahwang.cn/">安徽网</a></li>
+                    <li><a target="_blank" href="http://www.hebnews.cn/">河北新闻网</a></li>
+                    <li><a target="_blank" href="http://www.mnw.cn/">闽南网</a></li>
+                    <li><a target="_blank" href="http://www.hxnews.com/">海峡网</a></li>
+                    <li><a target="_blank" href="http://www.voc.com.cn/">华声在线</a></li>
+                    <li><a target="_blank" href="http://tv.cztv.com">中国蓝TV</a></li>
+                    <li><a target="_blank" href="http://www.lnd.com.cn/">北国网</a></li>
+                    <li><a target="_blank" href="http://www.longhoo.net/">龙虎网</a></li>
+                    <li><a target="_blank" href="http://www.timedg.com/">东莞时间网</a></li>
+                    <li><a target="_blank" href="http://www.autohome.com.cn/">汽车之家</a></li>
+                    <li><a target="_blank" href="http://www.onlylady.com/">Onlylady女人志</a></li>
+                    <li><a target="_blank" href="http://123.chinaso.com/">中国搜索</a></li>
+                    <li><a target="_blank" href="http://www.nbd.com.cn/">每日经济新闻</a></li>
+                    <li><a target="_blank" href="http://www.cheshi.com/">网上车市</a></li>
+                    <li><a target="_blank" href="http://www.news18a.com/">网通社汽车</a></li>
+                    <li><a target="_blank" href="http://www.enorth.com.cn/">北方网</a></li>
+                    <li><a target="_blank" href="http://www.hnt.gov.cn/">湖南省旅发委官网</a></li>
+                    <li><a target="_blank" href="http://www.leju.com/">乐居网</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- toolbar -->
+    <div class="toolbar">
+        <div class="tool-three">
+            <a href="#top"></a>
+        </div>
+    </div>
+
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/public.js"></script>
+    <script src="../public/js/article.js"></script>
+</body>
+
+</html>

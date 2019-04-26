@@ -1,0 +1,553 @@
+/* main部分 */
+/* clo1 */
+.bd-clo1 dl{
+    height: 600px;
+    width: 100px;
+    text-align: center;
+}
+.bd-clo1 dl dt{
+    font-size: 24px;
+    font-weight: 700;
+    margin: 7px 0;
+}
+.bd-clo1 dl dt a{
+    color: red;
+}
+.bd-clo1 dl dd{
+    width: 100px;
+    height: 40px;
+    float: left;
+    text-align: center;
+}
+.bd-clo1 dl dd a{
+    display: block;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    color: #434343;
+}
+.bd-clo1 dl dd a.active{
+    background: #ec403f;
+    color: #ffffff !important;
+}
+
+
+
+/* clo2 */
+/* 发布新闻 */
+.bd-clo2 .release{
+    width: 740px;
+    box-sizing: border-box;
+    border: 1px #ddd solid;
+    margin-top: 14px;
+    position: relative;
+}
+.release .upload-pic,.release .choose-emoji{
+    position: absolute;
+    bottom: -254px;
+    left: -1px;
+    width: 396px;;
+    height: 252px;
+    background-color: #fff;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 5px 15px rgba(0,0,0,.25);
+    border-radius: 5px;
+    padding: 12px;
+    box-sizing: border-box;
+    display: none;
+    overflow: hidden;
+}
+.release .choose-emoji{
+    left: 197px;
+}
+.release .choose-emoji i:hover{
+    border: 1px red solid;
+}
+.emoji{
+    margin-bottom: 3px;
+    max-width: 29px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 20px;
+    padding-top: 20px;
+    padding-left: 20px;
+    border: 1px #fff solid;
+}
+.release .sharp{ /*尖角*/
+    position: absolute;
+    left: 33px;
+    top: -8px;
+    border-bottom: 8px #fff solid;
+    border-left: 8px transparent solid;
+    border-right: 8px transparent solid;
+}
+.release .upload-pic .p-num{
+    margin-top: 5px;
+    color: #989898;
+}
+.release .upload-pic .addpic{
+    width: 74px;
+    height: 74px;
+    margin: 15px 15px 0 0;
+    box-sizing: border-box;
+    border: 3px #dcdcdc dashed;
+    text-align: center;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    cursor: pointer;
+}
+.release .upload-pic .addpic img{
+    width: 76px;
+    height: 76px;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    transition: all .5s;
+}
+.release .upload-pic .addpic:hover img{
+    transform: scale(1.1);
+}
+.close_pic{
+    font-family: 'icomoon';
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 666;
+    cursor: pointer;
+    color: #fff;
+    background: red;
+    width: 15px;
+    height: 15px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 50%;
+    display: none;
+}
+.release .upload-pic .addpic::before{
+    font-family: "icomoon";
+    content: "\ea0a";
+    color: #dcdcdc;
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    right: 0;
+}
+.release .upload-pic input{
+    position: absolute;
+    left: 0px;
+    top: -24px;
+    width: 74px;
+    height: 97px;
+    opacity: 0;
+    cursor: pointer;
+    outline: none;
+}
+.release #upload-video{
+    height: 165px;
+    bottom: -166px;
+    width: 300px;
+}
+.release #upload-video span{
+    font-size: 12px;
+    display: inline-block;
+    width: 160px;
+    height: 60px;
+    margin-left: 15px;
+}
+.release #upload-qAa{
+    width: 288px;
+    height: 161px;
+    bottom: -162px;
+}
+.release .re-top{
+    width: 740px;
+    height: 50px;
+}
+.release .re-top li{
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    margin-left: 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.release .re-top li.active{
+    border-bottom: 2px red solid;
+    color: red;
+}
+.release .re-top li select{
+    outline: none;
+    border: 1px solid skyblue;
+    margin: 14px 10px 0;
+    font-size: 16px;
+    height: 24px;
+    display: block;
+}
+.release .re-top li input{
+    height: 49px;
+    width: 506px;
+    vertical-align: top;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-top: -1px;
+    border: 1px solid #ddd
+}
+
+
+
+.release .re-bd{
+    width: 740px;
+}
+.release .re-bd li{
+    display: none;
+}
+.release .re-bd li.show{
+    display: block;
+}
+.release .re-bd textarea{
+    border: 0;
+    box-sizing: border-box;
+    width: 738px;
+    height: 110px;
+    background: #f3f4f5;
+    padding: 15px;
+    color: #747474;
+    font-weight: 700;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+}
+.release .re-bd-bo{
+    width: 739px;
+    height: 38px;
+    margin-top: -4px;
+    position: relative;
+    line-height: 38px;
+}
+.re-bd li:first-child span,
+.re-bd li:nth-child(3) span{
+    font-family: "icomoon";
+    font-size: 22px;
+    color: #ec403f;
+    position: absolute;
+    left: 15px;
+    top: 1px;
+}
+.re-bd li:nth-child(2) span{
+    font-family: "icomoon";
+    font-size: 22px;
+    color: #2b90d5;
+    position: absolute;
+    left: 15px;
+    top: 1px;
+}
+.re-bd li:nth-child(3) .label2{
+    color: #212121;
+}
+.re-bd li:nth-child(3) .label2 span{
+    left: -25px;
+}
+.re-bd li:nth-child(3) input[type=text]{
+    border: 0;
+    box-sizing: border-box;
+    width: 738px;
+    height: 40px;
+    background: #f3f4f5;
+    padding-left: 15px;
+    color: #747474;
+    resize: none;
+    outline: none;
+    border-bottom: 1px #dedede solid;
+}
+.re-bd li:nth-child(3) textarea{
+    height: 70px;
+}
+.release .re-bd-bo .label1{
+    margin-left: 40px;
+    color: #212121;
+    cursor: pointer;
+}
+.release .re-bd-bo .check{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 125px;
+    top: 9px;
+    cursor: pointer;
+    background: red;
+    color: red;
+    outline: none;
+}
+.release .re-bd-bo .label2{
+    color: #888888;
+    position: absolute;
+    left: 150px;
+    cursor: pointer;
+}
+.release .re-bd-bo i{
+    font-family: "icomoon";
+    position: absolute;
+    left: 230px;
+    top: 1px;
+    color: #888888;
+    font-size: 18px;
+    cursor: pointer;
+}
+.release .re-bd-bo em{
+    height: 18px;
+    line-height: 18px;
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    top: -22px;
+    background: #797a7a;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 0 5px;
+}
+.release .re-bd-bo input[type=submit]{
+    float: right;
+    width: 100px;
+    height: 38px;
+    background: #f75959;
+    outline: none;
+    color: #fff;
+}
+.re-bd-bo p{
+    float: right;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #ec403f;
+}
+
+
+
+/* 阅读新闻 */
+.bd-clo2 .main{
+    width: 740px;
+}
+.main li{
+    width: 740px;
+    height: 120px;
+    border-bottom: 1px #e7e7e7 solid;
+}
+.main li .newspic{
+    width: 150px;
+    height: 100px;
+    margin-top: 10px;
+    float: left;
+    overflow: hidden;
+}
+.main li .newspic img{
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+.main li .newspic_null{
+    width: 60px;
+    height: 59px;
+    margin-top: 20px;
+    float: left;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0,0,0,.3);
+    text-align: center;
+}
+.main li .newspic_null img{
+    width: 90%;
+    height: 90%;
+    transition: all 0.5s;
+    margin-top: 5px;
+    margin-left: 3px;
+}
+.main li .newspic:hover img{
+    transform: scale(1.1);
+}
+.main li .title{
+    width: 575px;
+    height: 120px;
+    float: left;
+    margin-left: 15px;
+    color: #767676;
+}
+.main li .title a:first-child{
+    color: #212121;
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+    margin: 20px 0 10px;
+}
+.main li .title a:first-child:hover{
+    color: #c90d16;
+}
+.main li .title a:nth-child(2){
+    display: inline-block;
+    width: 25px;
+    height: 15px;
+    border: 1px #b4733a solid;
+    font-size: 12px;
+    color: #b4733a;
+    text-align: center;
+    line-height: 15px;
+}
+.main li .title a:nth-child(3){
+    color: #767676;
+}
+.main li .title a:nth-child(4){
+    color: #767676;
+    cursor: text;
+}
+
+
+
+
+/* clo3 */
+/*用户登录*/
+/* 登录前 */
+.user_be,
+.user_af{
+    width: 300px;
+    height: 200px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    border: 20px #f3f4f5 solid;
+    background: #fff;
+    position: relative;
+}
+.user_be p{
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    padding: 0 5px;
+}
+.user_be a{
+    display: block;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #ec403f;
+    border: 0;
+    outline: none;
+    margin: 12px auto;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+}
+.user_be a:hover{
+    background: #c71622;
+}
+/* 登录后 */
+.user_af>a{
+    font-size: 12px;
+    color: #989898;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.user_af .user_head{
+    display: block;
+    margin: 10px auto;
+    width: 60px;
+    height: 60px;
+}
+.user_af .user_head img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.user_af .user_name{
+    display: block;
+    margin: 0 auto;
+    width: 220px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    color: #212121;
+}
+.user_af ul{
+    height: 62px;
+    width: 260px;
+}
+.user_af ul li:first-child,
+.user_af ul li:last-child{
+    float: left;
+    width: 129px;
+    height: 100%;
+    text-align: center;
+}
+.user_af ul li:nth-child(2){
+    float: left;
+    width: 1px;
+    height: 30px;
+    background: #eee;
+    margin-top: 17px;
+}
+.user_af ul li a{
+    color: #767676;
+}
+.user_af ul li a span{
+    font-weight: 700;
+    color: #212121;
+    font-size: 18px;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
+/* ad */
+.ad{
+    height: 300px;
+}
+.ad img{
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    transition: all 5s;
+}
+.ad img:hover{
+    transform: rotate(3600deg);
+}
+
+
+/* 发布时加载mask */
+.mask_release{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: url('../img/sysimages/timg.gif') no-repeat center rgba(0, 0, 0, .3);
+    display: none;
+}
+.mask_success{
+    width: 100px;
+    height: 50px;
+    background: #4c4c4c;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 5px;
+    display: none;
+}
+
+.top a{
+    color: #fff;
+    line-height: 35px;
+}

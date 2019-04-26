@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻资讯首页</title>
+    <link rel="shortcut icon" href="../public/favicon.ico" />
+    <link rel="stylesheet" href="../public/css/base.css">
+    <link rel="stylesheet" href="../public/css/public.css">
+    <link rel="stylesheet" href="../public/css/index.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <div id="top" class="top">
+        <a href="/sys">后台</a>
+    </div>
+    <!-- main -->
+    <div class="bd w">
+        <div class="bd-clo1">
+            <dl id="clo1-menu">
+                <dt><a href="/">新闻资讯</a></dt>
+                <dd><a href="/" class="active">头条</a></dd>
+                <dd><a href="/index?id=1">社会</a></dd>
+                <dd><a href="/index?id=2">国内</a></dd>
+                <dd><a href="/index?id=3">国际</a></dd>
+                <dd><a href="/index?id=4">娱乐</a></dd>
+                <dd><a href="/index?id=5">体育</a></dd>
+                <dd><a href="/index?id=6">军事</a></dd>
+                <dd><a href="/index?id=7">科技</a></dd>
+                <dd><a href="/index?id=8">财经</a></dd>
+                <dd><a href="/index?id=9">时尚</a></dd>
+            </dl>
+        </div>
+        <div class="bd-clo2">
+            <!-- 发布新闻 -->
+            <div class="release">
+                <form action="" id="article_form" enctype="multipart/form-data">
+                <div class="re-top">
+                    <ul>
+                        <li class="active">发布新闻</li>
+                        <li>
+                            <select name="category" id="">
+                                <option value="shehui">社会</option>
+                                <option value="guonei">国内</option>
+                                <option value="guoji">国际</option>
+                                <option value="yule">娱乐</option>
+                                <option value="tiyu">体育</option>
+                                <option value="junshi">军事</option>
+                                <option value="keji">科技</option>
+                                <option value="caijing">财经</option>
+                                <option value="shishang">时尚</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="">标题</label>
+                            <input type="text" name="title" id="title_inp" maxlength="50">
+                        </li>
+                        <!-- <li>发布视频</li> -->
+                        <!-- <li>发布问答</li> -->
+                    </ul>
+                </div>
+                <div class="re-bd">
+                    <ul>
+                        <!-- 发布图片模块 -->
+                        <li class="show">
+                            <textarea name="content" id="pic-txta" placeholder="有什么新鲜事想告诉大家"></textarea>
+                            <div class="re-bd-bo">
+                                <label class="label1" id="addpic"><span></span>&nbsp;添加图片</label>
+                                <input type="checkbox" name="" id="bd-bo-ch" class="check"><label class="label2"
+                                    for="bd-bo-ch">发布长文</label>
+                                <i id="addemoji"></i>
+                                <em><b>0</b>/2000字</em>
+                                <input type="submit" value="发布">
+                                <p></p>
+                            </div>
+                        </li>
+                        <!-- 发布视频模块 -->
+                        <!-- <li>
+                            <form action="" name="" method="GET" enctype="multipart/form-data">
+                                <textarea name="" id="video-txta" placeholder="视频标题 (30字以内)"></textarea>
+                                <div class="re-bd-bo">
+                                    <label class="label1" id="addvideo"><span></span>&nbsp;添加视频</label>
+                                    <em><b>0</b>/30字</em>
+                                    <input type="submit" value="发布">
+                                </div>
+                            </form>
+                        </li> -->
+                        <!-- 发布问答模块 -->
+                        <!-- <li>
+                            <form action="" name="" method="GET" enctype="multipart/form-data">
+                                <input type="text" name="" id="qAa-txt" placeholder="请输入问题标题 (0-40字)">
+                                <textarea name="" id="qAa-txta" placeholder="添加问题背景描述 (选填,0-40字)"></textarea>
+                                <div class="re-bd-bo">
+                                    <label class="label1" id="addqAa"><span></span>&nbsp;添加图片</label>
+                                    <a href="https://www.baidu.com" target="_blank"><label class="label2" for=""><span></span>&nbsp;更多问答</label></a>
+                                    <em><b>0</b>/40字</em>
+                                    <input type="submit" value="发布">
+                                </div>
+                            </form>
+                        </li> -->
+                    </ul>
+                </div>
+                <!-- 下拉上传图片框 -->
+                <div id="upload-pic" class="upload-pic">
+                    <div class="sharp"></div>
+                    <p>本地上传</p>
+                    <p class="p-num">共 0 张,还能上传 8 张</p>
+                    <div class="addpic">
+                        <span class="close_pic"></span>
+                        <img src="" alt="">
+                        <input type="file" class="articlePic_file">
+                    </div>
+                </div>
+                </form>
+                <!-- 下拉表情包框 -->
+                <div class="choose-emoji">
+                    <div class="sharp"></div>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_1_smile@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_2_kiss@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_3_daze@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_4_smoke@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_5_pick_nose@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_6_cry@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_7_anger@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_8_laugh@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_9_sleep@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_10_shy@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_11_naughty@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_12_dizzy@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_13_stunned@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_14_shut_up@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_15_wit@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_16_attention@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_17_hand_sample@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_18_ye@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_19_distress_situation@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_20_play_face@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_21_smile@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_22_yawn@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_23_surprise@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_24_take_heart@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_25_sleepy@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_26_what@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_27_sobbing@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_28_handclap@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_29_cool@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_30_titter@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_31_lightning_strike@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_32_meditation@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_33_vomiting_blood@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_34_acting_cute@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_35_quietly@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_36_hum@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_37_khan@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_38_forced_smile@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_39_haze@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_40_smirk@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_41_cool@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_42_bad_smile@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_43_crazy@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_44_tears@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_45_money@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_46_kiss@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_47_fear@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_48_smile@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_49_injustice@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_50_their@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_51_focus@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_52_like@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_53_handclap@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_54_3Q@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_55_kiss@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_56_household_cleanser@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_57_666@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_58_rose@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_59_cucumber@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_60_beer@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_61_distress_situation@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_62_injustice@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_63_lick_screen@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_64_despise@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_65_kiss@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_66_bye@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_67_erkang@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_68_hug@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_69_hitler@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_70_zhoudongyu_gaze@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_71_masichun_smile@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_72_dogo@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_73_cat@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_74_2ha@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_75_dogo@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_76_bear@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_77_skeleton@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_78_black_face@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_79_eat_melon@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_80_green_hat@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_81_sweat@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_82_lear_ropes@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_83_frown@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_84_wipe_sweat@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_85_redface@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_86_orz@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_87_makeface@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_88_intensity@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_89_ruhua@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_90_spit@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_91_surprise@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_92_knock@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_93_refuel@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_94_rainbow@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_95_bigcry@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_96_fingerheart@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_97_refuel@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_98_fist@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_99_OK@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_100_highfive@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_101_left@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_102_shakehand@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_103_18@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_104_knife@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_105_V5@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_106_awesome@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_107_heart@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_108_broken_heart@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_109_shit@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_110_gifts@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_111_cake@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_112_flower@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_113_lookat@3x.png')"></i>
+                    <i class="emoji" style="background-image:url('../public/img/emoticon/emoji_114_bomb@3x.png')"></i>
+                </div>
+                <!-- 下拉发视频框 -->
+                <!-- <div id="upload-video" class="upload-pic">
+                    <div class="sharp"></div>
+                    <p>上传视频</p>
+                    <p class="p-num">发布后，视频将出现在首页和个人页</p>
+                    <div class="addpic">
+                        <input type="file">
+                    </div>
+                    <span>支持绝大多数的视频格式，大小不超过250M，请勿上传违法视频。</span>
+                </div> -->
+                <!-- 下拉上传问答图片框 -->
+                <!-- <div id="upload-qAa" class="upload-pic">
+                    <div class="sharp"></div>
+                    <p>本地上传</p>
+                    <p class="p-num">共 0 张,还能上传 3 张</p>
+                    <div class="addpic">
+                        <input type="file">
+                    </div>
+                </div> -->
+            </div>
+            <!-- 新闻List -->
+            <div class="main clearfix">
+                <ul>
+                    {{ each articles }}
+                    <li>
+                        {{ if $value.pic_arr[1] }}
+                        <div class="newspic"><a href="/article?id={{ $value._id }}"><img src="../public/img/picture/{{ $value.pic_arr[1]}}" alt=""></a></div>
+                        {{ else }}
+                        <div class="newspic_null"><img src="../public/img/sysimages/logo.png" alt=""></div>
+                        {{ /if }}
+                        <div class="title">
+                            <a href="/article?id={{ $value._id }}">{{ $value.title }}</a>
+                            <a href="#">{{ $value.category }}</a>&nbsp;
+                            <a href="#">{{ $value.author_name }}</a>&nbsp;·
+                            <a href="#">{{ $value.comment_num }}&nbsp;评论</a>&nbsp;·
+                            <span>{{ $value.release_time }}</span>
+                        </div>
+                    </li>
+                    {{ /each }}
+                    {{ each toutiao }}
+                    <li>
+                        {{ if $value.thumbnail_pic_s }}
+                        <div class="newspic"><a href="{{ $value.url }}" target="_blank" ><img src="{{ $value.thumbnail_pic_s}}" alt=""></a></div>
+                        {{ else }}
+                        <div class="newspic_null"><img src="../public/img/sysimages/logo.png" alt=""></div>
+                        {{ /if }}
+                        <div class="title">
+                            <a href="{{ $value.url }}" target="_blank">{{ $value.title }}</a>
+                            <a href="#">{{ $value.category }}</a>&nbsp;
+                            <a href="#">{{ $value.author_name }}</a>&nbsp;·
+                            <span>{{ $value.date }}</span>
+                        </div>
+                    </li>
+                    {{ /each }}
+
+                </ul>
+            </div>
+        </div>
+        <div class="bd-clo3">
+            <!-- 搜索 -->
+            <div class="search">
+                <form action="" name="" method="GET">
+                    <input type="text" name="" id="">
+                    <input type="submit" value="搜索">
+                </form>
+            </div>
+            <!-- 登录后 -->
+            {{ if user }}
+            <div class="user_af">
+                <a href="/logout">退出登录</a>
+                <div>
+                    <a class="user_head" href="/user"><img src="../public/img/userhead/{{user.avatar}}" alt=""></a>
+                    <a class="user_name" href="/user">{{ user.nickname }}</a>
+                </div>
+                <ul>
+                    <li><a href=""><span>0</span>关注</a></li>
+                    <li></li>
+                    <li><a href=""><span>0</span>粉丝</a></li>
+                </ul>
+            </div>
+            <!-- 登录前 -->
+            {{ else }}
+            <div class="user_be">
+                <p>此网站仅作为毕业设计使用<br/>不准喷我</p>
+                <a href="/login" id="btn-login">登录</a>
+                <a href="/register" id="btn-register">注册</a>
+            </div>
+            {{ /if }}
+
+
+
+            <!-- banner -->
+            <div class="ad user_be">
+                <img src="../public/img/sysimages/fengche.png" alt="">
+            </div>
+            <!-- 24小时热闻 -->
+            <div class="hotnews clearfix">
+                <p>24小时热闻</p>
+                <ul>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        <div class="hotnews-title fl">
+                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                        </div>
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- 精彩图片 -->
+            <div class="hotpics hotnews clearfix">
+                <p>精彩图片</p>
+                <ul>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic2.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic3.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic4.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic5.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic6.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic7.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic8.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
+                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                    </li>
+                   
+                </ul>
+            </div>
+            <!-- 友情连接 -->
+            <div class="friend-link hotnews clearfix">
+                <p>友情链接</p>
+                <ul class="friend-link-content">
+                    <li><a target="_blank" href="http://www.gmw.cn/">光明网</a></li>
+                    <li><a target="_blank" href="http://www.cnr.cn/">央广网</a></li>
+                    <li><a target="_blank" href="http://www.cri.cn">国际在线</a></li>
+                    <li><a target="_blank" href="http://www.tibet.cn/">中国西藏网</a></li>
+                    <li><a target="_blank" href="http://www.cankaoxiaoxi.com/">参考消息</a></li>
+                    <li><a target="_blank" href="http://www.huanqiu.com/">环球网</a></li>
+                    <li><a target="_blank" href="http://www.cyol.com">中青在线</a></li>
+                    <li><a target="_blank" href="http://www.youth.cn/">中青网</a></li>
+                    <li><a target="_blank" href="http://www.haiwainet.cn/">海外网</a></li>
+                    <li><a target="_blank" href="http://h5.china.com.cn">中国网</a></li>
+                    <li><a target="_blank" href="http://www.k618.cn/">未来网</a></li>
+                    <li><a target="_blank" href="http://qianlong.com/">千龙网</a></li>
+                    <li><a target="_blank" href="http://www.bjnews.com.cn/">新京报</a></li>
+                    <li><a target="_blank" href="http://www.ynet.com/">北青网</a></li>
+                    <li><a target="_blank" href="http://www.fawan.com/">法制晚报</a></li>
+                    <li><a target="_blank" href="http://www.morningpost.com.cn">北京晨报</a></li>
+                    <li><a target="_blank" href="http://www.bbtnews.com.cn/">北京商报</a></li>
+                    <li><a target="_blank" href="http://www.stardaily.com.cn/">北京娱乐信报</a></li>
+                    <li><a target="_blank" href="http://www.oeeee.com/">奥一网</a></li>
+                    <li><a target="_blank" href="http://www.ycwb.com/">金羊网</a></li>
+                    <li><a target="_blank" href="http://www.hsw.cn/">华商网</a></li>
+                    <li><a target="_blank" href="http://www.xinmin.cn">新民网</a></li>
+                    <li><a target="_blank" href="http://www.rednet.cn/index.html">红网</a></li>
+                    <li><a target="_blank" href="http://www.jschina.com.cn">中国江苏网</a></li>
+                    <li><a target="_blank" href="http://www.jxnews.com.cn/">中国江西网</a></li>
+                    <li><a target="_blank" href="http://www.iqilu.com/">齐鲁网</a></li>
+                    <li><a target="_blank" href="http://www.hinews.cn/news/">南海网</a></li>
+                    <li><a target="_blank" href="http://www.ahwang.cn/">安徽网</a></li>
+                    <li><a target="_blank" href="http://www.hebnews.cn/">河北新闻网</a></li>
+                    <li><a target="_blank" href="http://www.mnw.cn/">闽南网</a></li>
+                    <li><a target="_blank" href="http://www.hxnews.com/">海峡网</a></li>
+                    <li><a target="_blank" href="http://www.voc.com.cn/">华声在线</a></li>
+                    <li><a target="_blank" href="http://tv.cztv.com">中国蓝TV</a></li>
+                    <li><a target="_blank" href="http://www.lnd.com.cn/">北国网</a></li>
+                    <li><a target="_blank" href="http://www.longhoo.net/">龙虎网</a></li>
+                    <li><a target="_blank" href="http://www.timedg.com/">东莞时间网</a></li>
+                    <li><a target="_blank" href="http://www.autohome.com.cn/">汽车之家</a></li>
+                    <li><a target="_blank" href="http://www.onlylady.com/">Onlylady女人志</a></li>
+                    <li><a target="_blank" href="http://123.chinaso.com/">中国搜索</a></li>
+                    <li><a target="_blank" href="http://www.nbd.com.cn/">每日经济新闻</a></li>
+                    <li><a target="_blank" href="http://www.cheshi.com/">网上车市</a></li>
+                    <li><a target="_blank" href="http://www.news18a.com/">网通社汽车</a></li>
+                    <li><a target="_blank" href="http://www.enorth.com.cn/">北方网</a></li>
+                    <li><a target="_blank" href="http://www.hnt.gov.cn/">湖南省旅发委官网</a></li>
+                    <li><a target="_blank" href="http://www.leju.com/">乐居网</a></li>
+                </ul>
+            </div>
+            <!-- 联系我 -->
+            <div class="friend-link hotnews clearfix">
+                <p> © 2019 新闻资讯</p>
+                <p>联系我</p>
+                <img src="../public/img/sysimages/me.png" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- toolbar -->
+    <div class="toolbar">
+        <div class="tool-one">
+            <a href="http://report.12377.cn:13225/toreportinputNormal_anis.do" target="_blank">
+                <img src="../public/img/sysimages/report_logo_15cc24e.png" alt="">
+                <span>网上有害信息举报</span>
+            </a>
+        </div>
+        <div class="tool-two">
+            <a href="/"></a>
+        </div>
+        <div class="tool-three">
+            <a href="#top"></a>
+        </div>
+    </div>
+
+    <!-- 发布文章时加载mask -->
+    <div class="mask_release"></div>
+    <div class="mask_success">发布成功</div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/public.js"></script>
+    <script src="../public/js/index.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>

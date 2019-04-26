@@ -1,0 +1,118 @@
+body{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: url('../img/sysimages/login_bg2.png') no-repeat center top;
+}
+a{
+    color: red;
+    letter-spacing: 5px;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: 700;
+}
+img{
+    width: 530px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-265px);
+}
+
+input::-webkit-input-placeholder{
+    color: #cbcbcb;
+}
+input:-moz-placeholder{ /*firefox 4-18*/
+    color: #cbcbcb;
+}
+input::-moz-placeholder{ /*firefox 19+*/
+    color: #cbcbcb;
+}
+input:-ms-input-placeholder{ /*ie 10+*/
+    color: #cbcbcb;
+}
+
+.box{
+    width: 336px;
+    height: 440px;
+    background: #fff;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    padding: 30px 32px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.25);
+}
+.box div{
+    width: 336px;
+    height: 45px;
+    border: solid 1px #ddd;
+    position: relative;
+}
+label{
+    float: left;
+    width: 90px;
+    height: 45px;
+    line-height: 45px;
+    padding-right: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+input{
+    border: 0;
+    outline: none;
+    float: right;
+    width: 236px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding-top: 2px;
+}
+/* 获取验证码 */
+.box button{
+    position: absolute;
+    right: -2px;
+    top: -1px;
+    height: 47px;
+    width: 100px;
+    background: #fff;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
+}
+.box button:hover{
+    border: 1px solid #989898;
+}
+
+
+/* tip */
+p{
+    font-size: 12px;
+    margin: 10px;
+    line-height: 12px;
+    color: #cbcbcb;
+    visibility: hidden;
+}
+
+
+/* 注册按钮 */
+#dv-sub{
+    margin-top: 32px;
+    border: 0;
+}
+.sub{
+    width: 338px;
+    height: 47px;
+    background: #e1231a;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+}
+.sub:hover{
+    background: #c71622;
+}

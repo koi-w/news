@@ -1,0 +1,276 @@
+.main{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: #ebeff2;
+}
+/* tou */
+ .header{
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    background: #5bcdc5;
+    height: 60px;
+}
+.logo{
+    height: 60px;
+    width: 490px;
+    text-align: center;
+}
+.logo span{
+    line-height: 60px;
+    font-size: 24px;
+    color: #fff;
+}
+.admin{
+    height: 60px;
+    width: 300px;
+    text-align: center;
+    line-height: 60px;
+}
+.admin span{
+    position: relative;
+}
+.admin span::before{
+    font-family: 'icomoon';
+    content: '\e971';
+    position: absolute;
+    left: -28px;
+    top: 0;
+    line-height: 20px;
+    font-size: 20px;
+}
+.admin label{
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+
+
+/* 左侧菜单 */
+.leftMenu{
+    position: fixed;
+    left:0;
+    top:75px;
+    bottom:0;
+    background: #2c3d4d;
+    width:190px;
+    height:100%;
+    overflow: hidden;
+    border-radius: 0 10px 0 0;
+}
+.leftMenu dl{
+    text-align: left;
+    color: #fff;
+}
+.leftMenu dt{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    padding-left: 55px;
+
+}
+.leftMenu dd{
+    width: 100%;
+    height: 50px;
+    float: left;
+    line-height: 50px;
+    position: relative;
+    padding-left: 55px;
+    cursor: pointer;
+}
+.leftMenu dd:hover,
+.leftMenu li:hover{
+    background: #415160;
+}
+.leftMenu dt::before{
+    font-family: 'icomoon';
+    content: "\e9bb";
+    position: absolute;
+    left: 23px;
+    top: 0;
+}
+.dd-one::before{
+    font-family: 'icomoon';
+    content: "\e971";
+    position: absolute;
+    left: 23px;
+    top: 0;
+}
+.dd-two::before{
+    font-family: 'icomoon';
+    content: "\e926";
+    position: absolute;
+    left: 23px;
+    top: 0;
+}
+.dd-three::before{
+    font-family: 'icomoon';
+    content: "\e902";
+    position: absolute;
+    left: 23px;
+    top: 0;
+}
+.dd-one::after,
+.dd-two::after,
+.dd-three::after{
+    font-family: 'icomoon';
+    content: "\ea53";
+    position: absolute;
+    left: 145px;
+    top: 1px;
+}
+.dd-one-active::after,
+.dd-two-active::after,
+.dd-three-active::after{
+    font-family: 'icomoon';
+    content: "\ea51";
+    position: absolute;
+    left: 145px;
+    top: -2px;
+}
+.leftMenu ul{
+    display: none;
+}
+.leftMenu li{
+    width: 100%;
+    height: 45px;
+    float: left;
+    line-height: 45px;
+    padding-left: 55px;
+    text-align: left;
+    cursor: pointer;
+}
+
+
+
+
+/* 右侧内容 */
+h1{
+    text-align: center;
+    margin-top: 22%;
+}
+.mainContent{
+    position: absolute;
+    left:210px;
+    top:75px;
+    bottom:0;
+    right:0;
+}
+.content-area{
+    width: 1280px;
+    height: 650px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, .2);
+    padding: 0 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* 数据搜索 */
+.date-search{
+    height: 65px;
+    /* background-color: #f00; */
+}
+
+/* 数据展示 */
+.date-show{
+    height: 490px;
+}
+table{
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    border: 1px #ecf0f3 solid;
+    table-layout: fixed;
+}
+table th{
+    height: 33px;
+}
+table th:first-child{
+    width: 45px;
+}
+table th:nth-child(2){
+    width: 45px;
+}
+table th:nth-child(3){
+    width: 150px;
+}
+table th:nth-child(4){
+    width: 170px;
+}
+table th:nth-child(6){
+    width: 200px;
+}
+table th:nth-child(7){
+    width: 170px;
+}
+table th:nth-child(8){
+    width: 45px;
+}
+table th:nth-child(9){
+    width: 140px;
+}
+table td{
+    color: #777;
+    overflow: hidden;
+}
+table td:nth-child(3){
+    font-size: 10px;
+}
+table td:nth-child(6){
+    font-size: 10px;
+}
+table tr{
+    height: 33px;
+    box-sizing: border-box;
+}
+table tr:nth-child(odd){
+    background: #ecf0f3;
+}
+table tr:nth-child(even) td{
+    border-left: 1px #ecf0f3 solid;
+    border-right: 1px #ecf0f3 solid;
+}
+table tr td:first-child input{
+    width: 20px;
+    height: 20px;
+    border: 0;
+    outline: 0;
+    margin-top: 5px;
+    cursor: pointer;
+}
+table tr td:hover{
+    background: greenyellow;
+}
+table tr td:last-child a{
+    padding: 0 23px;
+    position: relative;
+    color: #333;
+}
+table tr td:last-child a:first-child::before,
+table tr td:last-child a:last-child::before{
+    font-family: 'icomoon';
+    content: '\e906';
+    position: absolute;
+    top: 3px;
+    left: 4px;
+}
+table tr td:last-child a:last-child::before{
+    content: '\e9ac';
+    left: 6px;
+}
+
+
+/* 数据跳转 */
+.date-jump{
+    height: 92px;
+    /* background-color: #00f; */
+    margin-top: 3px;
+}

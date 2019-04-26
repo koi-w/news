@@ -1,0 +1,165 @@
+body{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: url('../img/sysimages/login_bg2.png') no-repeat center top;
+}
+.toindex{
+    color: red;
+    letter-spacing: 5px;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: 700;
+}
+img{
+    width: 530px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-265px);
+}
+
+.user-box{
+    width: 350px;
+    height: 345px;
+    background: #fff;
+    border: 2px #ccc solid;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.25);
+    position: absolute;
+    top: 235px;
+    left: 50%;
+    transform: translateX(-175px);
+    z-index: 100;
+    text-align: center;
+}
+.user-box .username,
+.user-box .password{
+    width: 300px;
+    height: 40px;
+    margin: 0 auto 20px;
+    display: block;
+    padding-left: 51px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+.user-box .username{
+    margin-top: 40px;
+}
+.user-box .password{
+    margin-bottom: 15px;
+}
+.user-box p{
+    font-size: 12px;
+}
+.user-box i{
+    font-weight: 700;
+}
+.user-box .close{
+    width: 30px;
+    height: 30px;
+    border-radius: 16px;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    background: #fff;
+    border: 2px #ccc solid;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: block;
+}
+.user-box .close:hover{
+    border-color: #333;
+}
+.user-box .close::before{
+    font-family: "icomoon";
+    content: "\ea0f";
+    line-height: 30px;
+}
+.user-box input[type=submit],
+.user-box a{
+    display: block;
+    height: 45px;
+    width: 300px;
+    margin: 0 auto;
+    background: #f75959;
+    margin-top: 30px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.user-box a{
+    line-height: 45px;
+    background: #fff;
+    color: #f75959;
+    border: 1px solid #f75959;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.username-ico{
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: 42px;
+    text-align: center;
+}
+.username-ico::before{
+    font-family: "icomoon";
+    content: "\e971";
+    color: #000;
+    font-size: 22px;
+    line-height: 38px;
+}
+.username-ico::after{
+    width: 1px;
+    height: 30px;
+    background-color: #b1b1b1;
+    position: absolute;
+    right: -1px;
+    top: 4px;
+    content: "";
+}
+.password-ico{
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: 101px;
+    text-align: center;
+}
+.password-ico::before{
+    font-family: "icomoon";
+    content: "\e901";
+    color: #000;
+    font-size: 22px;
+    line-height: 38px;
+    font-weight: 700;
+}
+.password-ico::after{
+    width: 1px;
+    height: 30px;
+    background-color: #b1b1b1;
+    position: absolute;
+    right: -1px;
+    top: 4px;
+    content: "";
+}
+
+label{
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    top: 176px;
+    left: 95px;
+    font-size: 14px;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>欢迎进入新闻资讯后台管理系统 v1.0.0</title>
+    <link rel="shortcut icon" href="../public/favicon.ico">
+    <link rel="stylesheet" href="../public/css/base.css">
+    <link rel="stylesheet" href="../public/css/manage.css">
+</head>
+<body>
+    
+    <div class="main">
+        <!-- 头 -->
+        <header class="header">
+            <div class="logo fl">
+                <span>欢迎进入新闻资讯后台管理系统 v1.0.0</span>
+            </div>
+            <div class="admin fr">
+                <span>您好, <em>admin</em></span>
+                <label id="logout">退出</label>
+            </div>
+        </header>
+        <!-- 左侧菜单 -->
+        <div class="leftMenu">
+            <dl>
+                <dt>目录</dt>
+                <dd id="dd-one" class="dd-one">用户管理</dd>
+                <ul id="ul-one">
+                    <li>管理员</li>
+                    <li>作者</li>
+                    <li>普通游客</li>
+                </ul>
+                <dd id="dd-two" class="dd-two">新闻管理</dd>
+                <ul id="ul-two">
+                    <li>图文</li>
+                    <li>视频</li>
+                    <li>问答</li>
+                </ul>
+                <dd id="dd-three" class="dd-three">评论管理</dd>
+                <ul id="ul-three">
+                    <li>图文评论</li>
+                    <li>视频评论</li>
+                    <li>问答评论</li>
+                </ul>
+            </dl>
+        </div>
+        <!-- 内容 -->
+        <div class="mainContent">
+            <div class="content-area">
+                <h1>欢迎进入后台管理系统！</h1>
+                <div class="date-search">
+
+                </div>
+                <div class="date-show">
+                    <table>
+                    </table>
+                </div>
+
+                <div class="date-jump">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/manage.js"></script>
+</body>
+</html>

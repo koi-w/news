@@ -1,0 +1,345 @@
+body{
+    /* background: url('../images/bg_body.gif'); */
+    font-size: 16px;
+}
+.fixed{
+    position: fixed;
+    top: 0px;
+}
+/* 头部分 */
+.top{
+    width: 100%;
+    height: 35px;
+    background: black;
+}
+/* 头部 */
+.top>ul{
+    margin-left: 10px;
+}
+.top>ul>li{
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    box-sizing: border-box;
+}
+.top>ul>li a:hover{
+    color: red;
+}
+.top>ul>li a{
+    display: block;
+    color: #fff;
+    height: 35px;
+    padding: 0 10px;
+    font-size: 13px;
+}
+.top div{
+    width: 160px;
+    height: 100%;
+}
+.top .user-mini>a{
+    display: block;
+    width: 160px;
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 35px;
+    color: #fff;
+    text-align: center;
+}
+.user-mini:hover .user-mini-menu{
+    display: block;
+}
+.top .user-mini>a img{
+    height: 28px;
+    width: 28px;
+    vertical-align: middle;
+    border-radius: 14px;
+}
+.top .user-mini ul{
+    width: 125px;
+    background: #fff;
+    border: 1px #989898 solid;
+    margin-left: 15px;
+    position: relative;
+    display: none;
+    z-index: 666;
+}
+.top .user-mini li{
+    width: 125px;
+    height: 40px;
+    text-align: center;
+    margin-right: 0;
+}
+.top .user-mini li:hover{
+    background: #f1f1f4;
+}
+.top .user-mini li a{
+    display: block;
+    color: #989898;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+}
+.top .user-mini i{
+    width: 20px;
+    height: 20px;
+    box-sizing: border-box;
+    border: 10px transparent solid;
+    border-bottom: 10px #fff solid;
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: -20px;
+}
+.top .article_login{
+    display: block;
+    margin-right: 168px;
+    color: #fff;
+    line-height: 35px;
+}
+
+/* 24小时热闻 */
+.hotnews{
+    width: 300px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    background: #f3f4f5;
+    border-top: 2px #ec403f solid;
+}
+.hotnews p{
+    font-size: 18px;
+    font-weight: 700;
+    margin: 12px 0 12px;
+    padding-left: 20px;
+}
+.hotnews li{
+    width: 260px;
+    height: 59px;
+    border-bottom: 1px #333 solid;
+    float: left;
+    margin-left: 20px;
+}
+.hotnews li:last-child{
+    border-bottom: 15px #f3f4f5 dotted;
+}
+.hotnews .hotnews-pic{
+    width: 50px;
+    height: 50px;
+    margin: 5px 10px 5px 0;
+    overflow: hidden;
+}
+.hotnews .hotnews-pic img{
+    width: 50px;
+    height: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.hotnews .hotnews-pic img:hover{
+    transform: scale(1.1);
+}
+.hotnews .hotnews-title{
+    width: 200px;
+    height: 40px;
+    padding-top: 10px;
+    font-size: 14px;
+}
+.hotnews .hotnews-title a{
+    display: inline-block;
+    height: 40px;
+    color: #212121;
+    /* 多行文本溢出显示省略号 */
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.hotnews .hotnews-title a:hover{
+    color: #c90d16;
+}
+/* 精彩图片 */
+.hotpics li{
+    width: 122px;
+    height: 140px;
+    margin-bottom: 5px;
+    border: 0;
+}
+.hotpics li a:first-child{
+    display: block;
+    width: 122px;
+    height: 85px;
+    overflow: hidden;
+    position: relative;
+}
+.hotpics li a:first-child img{ 
+    width: 122px;
+    height: 85px;
+    transition: all 0.5s;
+}
+.hotpics li a:first-child img:hover{
+    transform: scale(1.1);
+}
+.hotpics li a:last-child{
+    font-size: 13px;
+    display: block;
+    height: 35px;
+    margin-top: 10px;
+    padding: 0;
+    overflow: hidden;
+    color: #212121;
+}
+.hotpics li a:last-child:hover{
+    color: #c90d16;
+}
+.hotpics li span{
+    background: #44423d;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    padding: 0 5px;
+}
+/* 友情链接 */
+.friend-link li{
+    line-height: 35px;
+    width: auto;
+    height: auto;
+    border: 0;
+}
+.friend-link li a{
+    color: #767676;
+}
+.friend-link img{
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+    display: block;
+    border-bottom: 20px #f3f4f5 dotted;
+}
+
+
+/* main部分col */
+.bd-clo1{
+    height: 600px;
+    width: 100px;
+    float: left;
+}
+.bd-clo2{
+    width: 740px;
+    float: left;
+    margin: 0 30px;
+    /* background-color: greenyellow; */
+}
+.bd-clo3{
+    width: 300px;
+    float: right;
+}
+
+
+/* clo3 */
+/* 搜索 */
+.search{
+    width: 300px;
+    height: 50px;
+    margin-top: 14px;
+}
+.search input[type=text]{
+    width: 220px;
+    height: 50px;
+    background: #f4f5f6;
+    border: 1px #e7e7e7 solid;
+    box-sizing: border-box;
+    border-radius: 10px 0 0 10px;
+    outline:none;
+    font-size: 20px;
+    padding-left: 8px;
+}
+.search input[type=text]:hover{
+    border-color: #228ed8;
+}
+.search input[type=submit]{
+    width: 80px;
+    height: 50px;
+    float: right;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0 10px 10px 0;
+    background: #228ed8;
+    font-size: 17px;
+    color: #fff;
+}
+
+
+/* toolbar */
+.toolbar{
+    width: 40px;
+    height: 171px;
+
+    position: fixed;
+    left: 50%;
+    bottom: 40px;
+    margin-left: 605px;
+}
+.toolbar div{
+    margin-bottom: 2px;
+    background: #f97a7a;
+    transition: all 0.5s;
+}
+.toolbar div:hover{
+    background: #f75959;
+}
+.toolbar .tool-one,
+.toolbar .tool-one a{
+    width: 40px;
+    height: 85px;
+    text-align: center;
+}
+.toolbar .tool-one a{
+    display: block;
+}
+.toolbar .tool-one img{
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+}
+.toolbar .tool-one span{
+    color: #fff;
+    font-size: 12px;
+    display: block;
+}
+.toolbar .tool-two,
+.toolbar .tool-three{
+    width: 40px;
+    height: 40px;
+}
+.toolbar .tool-two a,
+.toolbar .tool-three a{
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.toolbar .tool-two a::before{
+    font-family: "icomoon";
+    content: "\e982";
+    color: #fff;
+    font-size: 18px;
+}
+.toolbar .tool-three a::before{
+    font-family: "icomoon";
+    content: "\ea52";
+    color: #fff;
+    font-size: 30px;
+    line-height: 50px;
+}
+.toolbar .tool-three{
+    display: none;
+}
+.toolbar .tool-one{
+    margin-top: 42px;
+}
