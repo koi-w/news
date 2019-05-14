@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索一下，你就知道</title>
+    <link rel="shortcut icon" href="../public/favicon.ico" />
+    <link rel="stylesheet" href="../public/css/base.css">
+    <link rel="stylesheet" href="../public/css/public.css">
+    <link rel="stylesheet" href="../public/css/search.css">
+</head>
+<body>
+        <!-- 头部 -->
+        <div id="top" class="top">
+            <ul>
+                <li><a href="/">头条</a></li>
+                <li><a href="/index?id=1">社会</a></li>
+                <li><a href="/index?id=2">国内</a></li>
+                <li><a href="/index?id=3">国际</a></li>
+                <li><a href="/index?id=4">娱乐</a></li>
+                <li><a href="/index?id=5">体育</a></li>
+                <li><a href="/index?id=6">军事</a></li>
+                <li><a href="/index?id=7">科技</a></li>
+                <li><a href="/index?id=8">财经</a></li>
+                <li><a href="/index?id=9">时尚</a></li>
+            </ul>
+            {{ if user }}
+            <div class="user-mini fr">
+                <a href="/user">
+                    <img src="../public/img/userhead/{{ user.avatar }}" alt="">
+                    <span>{{user.nickname}}</span>
+                </a>
+                <ul class="user-mini-menu clearfix">
+                    <li><a href="#">我的收藏</a></li>
+                    <li><a href="#">我的关注</a></li>
+                    <li><a href="#">我的粉丝</a></li>
+                    <li><a href="#">退出</a></li>
+                    <i></i>
+                </ul>
+            </div>
+            <label for="" class="fr">发布</label>
+            {{ else }}
+            <a href="/login" class="article_login fr">登录</a>
+            {{ /if }}
+        </div>
+
+
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/public.js"></script>
+    <script src="../public/js/search.js"></script>
+</body>
+</html>

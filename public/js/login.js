@@ -44,6 +44,10 @@ $(function(){
             dataType:'json',
             success:function(data){
                 if(data.err_code === 0){
+                    if($('#identity').val() == 0){
+                        window.location.href = '/sys'
+                        return
+                    }
                     window.location.href = '/'
                     return
                 }

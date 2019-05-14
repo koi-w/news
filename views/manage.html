@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="../public/favicon.ico">
     <link rel="stylesheet" href="../public/css/base.css">
     <link rel="stylesheet" href="../public/css/manage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
 </head>
 <body>
     
@@ -55,11 +56,24 @@
                 </div>
                 <div class="date-show">
                     <table>
+                        <thead></thead>
+                        <tbody></tbody>
                     </table>
                 </div>
 
                 <div class="date-jump">
-
+                    <ul class="pagination">
+                        <li id="prev">
+                              <a href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              </a>
+                        </li>
+                        <li id="next">
+                              <a href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -67,6 +81,7 @@
 
 
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../public/js/jquery.pagination.js"></script>
     <script src="../public/js/manage.js"></script>
 </body>
 </html>

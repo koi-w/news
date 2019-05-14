@@ -1,3 +1,13 @@
+.top>span{
+    color: #fff;
+    line-height: 35px;
+    margin-left: 20px;
+}
+.top>a{
+    color: #fff;
+    line-height: 35px;
+    margin-right: 20px;
+}
 /* main部分 */
 /* clo1 */
 .bd-clo1 dl{
@@ -345,6 +355,7 @@
     margin-top: 10px;
     float: left;
     overflow: hidden;
+    border-radius: 10px;
 }
 .main li .newspic img{
     width: 100%;
@@ -493,10 +504,10 @@
     background: #eee;
     margin-top: 17px;
 }
-.user_af ul li a{
+.user_af ul li{
     color: #767676;
 }
-.user_af ul li a span{
+.user_af ul li span{
     font-weight: 700;
     color: #212121;
     font-size: 18px;

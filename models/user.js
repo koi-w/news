@@ -49,12 +49,12 @@ var userSchema = new Schema({
         default:0
     },
     attentions:{
-        type:String,
-        default:0
+        type:Array,
+        default:null
     },
     fans:{
-        type:String,
-        default:0
+        type:Array,
+        default:null
     }
 })
 

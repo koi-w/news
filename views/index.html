@@ -14,7 +14,11 @@
 <body>
     <!-- 头部 -->
     <div id="top" class="top">
-        <a href="/sys">后台</a>
+        <span>成都：15-30 ℃&nbsp;&nbsp;&nbsp;多云</span>
+        {{ if user }}
+        {{ else }}
+        <a href="/login" class="fr">登录</a>
+        {{ /if }}
     </div>
     <!-- main -->
     <div class="bd w">
@@ -258,12 +262,12 @@
                     {{ each articles }}
                     <li>
                         {{ if $value.pic_arr[1] }}
-                        <div class="newspic"><a href="/article?id={{ $value._id }}"><img src="../public/img/picture/{{ $value.pic_arr[1]}}" alt=""></a></div>
+                        <div class="newspic"><a href="/article?id={{ $value._id }}" target="_blank"><img src="../public/img/picture/{{ $value.pic_arr[1]}}" alt=""></a></div>
                         {{ else }}
                         <div class="newspic_null"><img src="../public/img/sysimages/logo.png" alt=""></div>
                         {{ /if }}
                         <div class="title">
-                            <a href="/article?id={{ $value._id }}">{{ $value.title }}</a>
+                            <a href="/article?id={{ $value._id }}" target="_blank">{{ $value.title }}</a>
                             <a href="#">{{ $value.category }}</a>&nbsp;
                             <a href="#">{{ $value.author_name }}</a>&nbsp;·
                             <a href="#">{{ $value.comment_num }}&nbsp;评论</a>&nbsp;·
@@ -293,23 +297,25 @@
         <div class="bd-clo3">
             <!-- 搜索 -->
             <div class="search">
-                <form action="" name="" method="GET">
-                    <input type="text" name="" id="">
+                <form id="search_sub">
+                    <input class="search-text" type="text" name="searchCon" autocomplete="off">
                     <input type="submit" value="搜索">
                 </form>
+                <ul>
+                </ul>
             </div>
             <!-- 登录后 -->
             {{ if user }}
             <div class="user_af">
                 <a href="/logout">退出登录</a>
                 <div>
-                    <a class="user_head" href="/user"><img src="../public/img/userhead/{{user.avatar}}" alt=""></a>
-                    <a class="user_name" href="/user">{{ user.nickname }}</a>
+                    <a class="user_head" href="/user" target="_blank"><img src="../public/img/userhead/{{user.avatar}}" alt=""></a>
+                    <a class="user_name" href="/user" target="_blank">{{ user.nickname }}</a>
                 </div>
                 <ul>
-                    <li><a href=""><span>0</span>关注</a></li>
+                    <li><span id="atten">{{user.attentions}}</span>关注</li>
                     <li></li>
-                    <li><a href=""><span>0</span>粉丝</a></li>
+                    <li><span id="fan">{{user.fans}}</span>粉丝</li>
                 </ul>
             </div>
             <!-- 登录前 -->
@@ -320,9 +326,6 @@
                 <a href="/register" id="btn-register">注册</a>
             </div>
             {{ /if }}
-
-
-
             <!-- banner -->
             <div class="ad user_be">
                 <img src="../public/img/sysimages/fengche.png" alt="">
@@ -331,30 +334,25 @@
             <div class="hotnews clearfix">
                 <p>24小时热闻</p>
                 <ul>
+                    {{each hotnews}}
                     <li>
-                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
+                        {{ if $value.pic_arr[1] }}
+                        <div class="hotnews-pic fl">
+                            <a href="/article?id={{ $value._id }}" target="_blank">
+                                <img src="../public/img/picture/{{ $value.pic_arr[1]}}" alt="">
+                            </a>
+                        </div>
+                        {{ else }}
+                        <div class="hotnews-pic fl"><a href="/article?id={{ $value._id }}" target="_blank"><img src="../public/img/sysimages/logo.png" alt=""></a></div>
+                        {{ /if }}
                         <div class="hotnews-title fl">
-                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
+                            <a href="/article?id={{ $value._id }}" target="_blank">
+                                <span>{{ $value.read_num }}</span>&nbsp;
+                                {{ $value.title }}
+                            </a>
                         </div>
                     </li>
-                    <li>
-                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
-                        <div class="hotnews-title fl">
-                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
-                        <div class="hotnews-title fl">
-                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="hotnews-pic fl"><img src="../public/img/picture/hotnews1.jpg" alt=""></div>
-                        <div class="hotnews-title fl">
-                            <a href="">马哈蒂尔：若被逼选边站，我选中国而不是美国 房贷首付付付付的</a>
-                        </div>
-                    </li>
+                   {{/each}}
                    
                 </ul>
             </div>
@@ -362,46 +360,15 @@
             <div class="hotpics hotnews clearfix">
                 <p>精彩图片</p>
                 <ul>
+                    {{ each hotpics }}
                     <li>
-                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
+                        <a href="/article?id={{ $value._id }}" target="_blank">
+                            <img src="../public/img/picture/{{ $value.pic_arr[1]}}" alt="">
+                            <span><em>{{$value.pic_arr}}</em>图</span>
+                        </a>
+                        <a href="/article?id={{ $value._id }}" target="_blank">{{ $value.title }}</a>
                     </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic2.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic3.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic4.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic5.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic6.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic7.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic8.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="../public/img/picture/hotpic1.jpg" alt=""><span><em>8</em>图</span></a>
-                        <a href="#">猫咪换的新鞋子，不同的颜色都有</a>
-                    </li>
+                    {{ /each }}
                    
                 </ul>
             </div>

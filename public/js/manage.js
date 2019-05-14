@@ -27,32 +27,13 @@ $(function(){
                     <th>状态</th>
                     <th>操作</th>
                     </tr>`
-        $('table').html(head)
+        $('table thead').html(head)
         $.ajax({
             url:'/userSys',
             type:'get',
             dataType:'json',
             success:function(data){
-                data.forEach(function(ele,index){
-                    var str = `<tr>
-                               <td><input type="checkbox" name="" id="id123"></td>
-                               <td><label for="id123">${index+1}</label></td>
-                               <td>${ele._id}</td>
-                               <td>${ele.nickname}</td>
-                               <td>${ele.email}</td>
-                               <td>${ele.password}</td>
-                               <td>${ele.last_modified_time}</td>
-                               <td>${ele.status}</td>
-                               <td>
-                                   <a id=${ele._id} class="edit-user" href="javascript:void(0)">编辑</a>
-                                   <a id=${ele._id} class="delete-user" href="javascript:void(0)">删除</a>
-                               </td>
-                               </tr>`
-                    var tr = document.createElement('tr')
-                    tr.innerHTML = str
-                    $('table').append(tr)
-                })
-                ergodicUser()
+                paging(data)
             }
         })
     })
@@ -83,5 +64,53 @@ $(function(){
         })
     }
 
+    //分页
+    function paging(data){
+        // 总数;
+        var data_totle = data.length;
+        // 每页显示多少个;
+        var showCount = 2;
+        var pageCount = 1;
+
+        function renderPage() {
+            var html = ''
+            for (var i = showCount * (pageCount - 1); i <= showCount * pageCount - 1;) {
+                item = data[i++];
+                if (!item) break;
+                html += ` <tr>
+                            <td><input type="checkbox" name="" id="id123"></td>
+                            <td><label for="id123">${i}</label></td>
+                            <td>${item._id}</td>
+                            <td>${item.nickname}</td>
+                            <td>${item.email}</td>
+                            <td>${item.password}</td>
+                            <td>${item.last_modified_time}</td>
+                            <td>${item.status}</td>
+                            <td>
+                                <a id=${item._id} class="edit-user" href="javascript:void(0)">编辑</a>
+                                <a id=${item._id} class="delete-user" href="javascript:void(0)">删除</a>
+                            </td></tr>`
+            }
+            $('table tbody').html(html)
+            ergodicUser()
+        }
+
+        function renderButton() {
+            $(".pagination").pagination({
+                totalData: data_totle,
+                showData: showCount,
+                eleCls: "btn btn-default",
+                activeCls: "btn btn-danger active",
+                prevCls: "btn btn-primary",
+                nextCls: "btn btn-primary",
+                callback: function (api) {
+                    pageCount = api.getCurrent()
+                    renderPage();
+                }
+            });
+        }
+        renderPage()
+        renderButton()
+    }
     
 })

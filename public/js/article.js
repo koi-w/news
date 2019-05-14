@@ -151,11 +151,6 @@ $(function(){
 
     })();
 
-    //点击切换关注
-    $('#concern').on('click',function(){
-        $(this).toggleClass('active')
-    })
-
     //点击加载评论
     $('.comment_mask').on('click',function(){
         $('.comment').show()
@@ -193,6 +188,55 @@ $(function(){
                 ergodicReplayEvent()
             }
         })
+    })
+
+
+    //判断关注状态
+    function pdstatus(){
+        var $con = $('#concern')
+        var arr = $con.text().replace(/\[|\]|\"/g,'').split(',')
+        var au_id = $con.attr('au_id')
+        if(arr.indexOf(au_id) != -1){
+            $con.attr('data','1')
+            $con.addClass('active')
+            $con.text('')
+            return
+        }
+        $con.text('')
+        return
+    }
+    pdstatus()
+    var timeid = null
+    //加关注
+    $('#concern').on('click',function(){
+        if($(this).attr('login') === '0'){
+            var c = confirm('你还未登录，请先登录!')
+            if (c) {
+                window.location.href = '/login'
+                return
+            }
+            return
+        }
+        $(this).toggleClass('active')
+        if ($(this).attr('data') === '0') {
+            $(this).attr('data', '1')
+        } else {
+            $(this).attr('data', '0')
+        }
+        clearInterval(timeid)
+        timeid = setTimeout(function () {
+            $.ajax({
+                url:'/attention',
+                type:'get',
+                data:{
+                    status:$(this).attr('data'),
+                    au_id:$(this).attr('au_id')
+                },
+                success:function(data){
+
+                }
+            })
+        }.bind(this), 1000)
     })
 
 
@@ -406,36 +450,3 @@ $(function(){
 
 
 });
-
-
-
-/* <li>
- <a href=""><img src="../public/img/userhead/defaultUserTX.png" alt=""></a>
-<div>
-    <dl>
-        <dt><a href="">用户的name</a><span>1小时前</span><a href="#" class="comment_zan">166623</a></dt>
-        <dd>生命是快乐的，生日是幸福的，快乐的生命里有你浪漫的生日，是最最烂漫温馨的，我让短信带去我给你的思念，
-            愿你永远年轻，愿你今生美好！生命是快乐的，生命是快乐的，生命是快乐的，生命是快乐的，生命是快乐的!</dd>
-        <dd><b id="toggle-fu">回复</b>&nbsp;·&nbsp;<b>66条回复</b><br />
-            <div class="box-hf comment-write clearfix">
-                <div class="div-hf">回复</div>
-                <input type="hidden" name="" class="comment_id" value="">
-                <textarea class="comment-input" name="" id="comment-input"
-                    placeholder="写下您的回复"></textarea>
-                 
-            </div>
-        </dd>
-    </dl>
-</div>
-<div class="reply-content">
-        <a href=""><img src="../public/img/userhead/defaultUserTX.png" alt=""></a>
-        <div>
-            <dl>
-                <dt><a href="">用户的name</a><span>1小时前</span><a href="#" id="comment_zan">166623</a></dt>
-                <dd>生命是快乐的，生日是幸福的，快乐的生命里有你浪漫的生日，是最最烂漫温馨的，我让短信带去我给你的思念，
-                    愿你永远年轻，愿你今生美好！生命是快乐的，生命是快乐的，生命是快乐的，生命是快乐的，生命是快乐的!</dd>
-            </dl>
-        </div>
-</div> 
-
-</li> */

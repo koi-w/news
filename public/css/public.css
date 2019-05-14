@@ -124,14 +124,15 @@ body{
     border-bottom: 15px #f3f4f5 dotted;
 }
 .hotnews .hotnews-pic{
-    width: 50px;
-    height: 50px;
-    margin: 5px 10px 5px 0;
+    width: 45px;
+    height: 45px;
+    margin: 7px 10px 5px 0;
     overflow: hidden;
+    border-radius: 10px;
 }
 .hotnews .hotnews-pic img{
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     transition: all 0.5s;
     cursor: pointer;
 }
@@ -143,6 +144,13 @@ body{
     height: 40px;
     padding-top: 10px;
     font-size: 14px;
+}
+.hotnews .hotnews-title span{
+    color: red;
+}
+.hotnews .hotnews-title span::before{
+    font-family: "icomoon";
+    content: "\e9a9";
 }
 .hotnews .hotnews-title a{
     display: inline-block;
@@ -171,6 +179,7 @@ body{
     height: 85px;
     overflow: hidden;
     position: relative;
+    border-radius: 10px;
 }
 .hotpics li a:first-child img{ 
     width: 122px;
@@ -200,7 +209,7 @@ body{
     color: #fff;
     border-radius: 6px;
     font-size: 12px;
-    padding: 0 5px;
+    padding: 0 5px 0 3px;
 }
 /* 友情链接 */
 .friend-link li{
@@ -245,6 +254,7 @@ body{
     width: 300px;
     height: 50px;
     margin-top: 14px;
+    position: relative;
 }
 .search input[type=text]{
     width: 220px;
@@ -271,6 +281,30 @@ body{
     background: #228ed8;
     font-size: 17px;
     color: #fff;
+}
+.search ul{
+    width: 220px;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    background: #fff;
+    z-index: 999;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: none;
+}
+.search ul li{
+    margin-bottom: 5px;
+    width: 202px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+.search ul li:hover{
+    background: #ccc;
 }
 
 

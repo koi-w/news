@@ -1,5 +1,184 @@
 $(function(){
 
+    //查询我的文章
+    function look_news(){
+        var html = ''
+        $.ajax({
+            url:'/look_news',
+            type:'get',
+            dataType:'json',
+            success:function(data){
+                if(data._articles.length === 0){
+                    $('.content').addClass('active').children('ul').hide();
+                    return
+                }
+                $('.content').removeClass('active')
+                $('.con_news').show().siblings('ul').hide()
+                data._articles.forEach(function(item){
+                    if(item.pic_arr){
+                        html += `<li>
+                                <div class="newspic"><a href="/article?id=${item._id}" target="_blank"><img src="../public/img/picture/${item.pic_arr[1]}" alt=""></a></div>
+                                <div class="title">
+                                    <a href="/article?id=${item._id}" target="_blank">${item.title}</a>
+                                    <a href="#">${item.category}</a>&nbsp;
+                                    <a href="#">${item.comment_num}&nbsp;评论</a>&nbsp;·
+                                    <span>${item.release_time}</span>
+                                </div><em ar-id='${item._id}'>×</em></li>
+                                `
+                        $('.con_news').html(html)
+                        return
+                    }
+                    html += `<li>
+                            <div class="newspic_null"><img src="../public/img/sysimages/logo.png" alt=""></div>
+                            <div class="title">
+                                <a href="/article?id=${item._id}" target="_blank">${item.title}</a>
+                                <a href="#">${item.category}</a>&nbsp;
+                                <a href="#">${item.comment_num}&nbsp;评论</a>&nbsp;·
+                                <span>${item.release_time}</span>
+                            </div><em ar-id='${item._id}'>×</em></li>
+                            `
+                    $('.con_news').html(html)
+                    return
+                })
+            }
+        })
+    }
+
+    //tab栏切换
+    $('#tab_news').on('click',function(){
+        $(this).addClass('active').siblings('li').removeClass('active')
+        look_news()
+    })
+    $('#tab_atten').on('click',function(){
+        $(this).addClass('active').siblings('li').removeClass('active')
+        look_atten()
+    })
+    $('#tab_fan').on('click',function(){
+        $(this).addClass('active').siblings('li').removeClass('active')
+        look_fans()
+    })
+    
+    //触发查询文章按钮
+    $('#tab_news').trigger('click')
+    
+    //为每个文章绑定删除事件，事件委派
+    $('.con_news').on('click','em',function(){
+        if(confirm('确定要删除该文章吗？')){
+            $.ajax({
+                url:'/userDel_art',
+                type:'get',
+                data:{id:$(this).attr('ar-id')},
+                dataType:'json',
+                success:function(data){
+                    if(data.err_code === 0){
+                        alert('删除成功！')
+                        $(this).parent().remove()
+                        return
+                    }
+                    alert('删除失败')
+                }.bind(this)
+            })
+        }
+    })
+
+    //查看我的关注
+    $('#atten_cli').on('click',look_atten)
+    function look_atten(){
+        if($('#atten_cli').children('p').text() == 0){
+            $('.content').addClass('active').children('ul').hide();
+            $('#tab_atten').addClass('active').siblings('li').removeClass('active')
+            return
+        }
+        $('.content').removeClass('active')
+        $('#tab_atten').addClass('active').siblings('li').removeClass('active')
+        $('.con_atten').show().siblings('ul').hide()
+        var html = ''
+        attenArr.forEach(function(item,index){
+            $.ajax({
+                url:'/look_atten',
+                type:'get',
+                data:{id:item},
+                dataType:'json',
+                success:function(data){
+                    html += `<li>
+                                <a href="#">
+                                    <img src="../public/img/userhead/${data.data.avatar}" alt="">
+                                    <p>${data.data.nickname}</p>
+                                </a>
+                                <button login="1" id="concern" data='1' au_id='${item}' class="active"></button>
+                                </li>`
+                    $('.con_atten').html(html)
+                }
+            })
+        })
+    }
+    var timeid = null
+    //切换关注
+    $('.con_atten').on('click','button',function(){
+        if($(this).attr('login') === '0'){
+            var c = confirm('你还未登录，请先登录!')
+            if (c) {
+                window.location.href = '/login'
+                return
+            }
+            return
+        }
+        $(this).toggleClass('active')
+        if ($(this).attr('data') === '0') {
+            $(this).attr('data', '1')
+        } else {
+            $(this).attr('data', '0')
+        }
+        clearInterval(timeid)
+        timeid = setTimeout(function () {
+            $.ajax({
+                url:'/attention',
+                type:'get',
+                data:{
+                    status:$(this).attr('data'),
+                    au_id:$(this).attr('au_id')
+                },
+                success:function(data){
+
+                }
+            })
+        }.bind(this), 1000)
+    })
+
+    //查看我的粉丝
+    $('#fan_cli').on('click',look_fans)
+    function look_fans(){
+        if($('#fan_cli').children('p').text() == 0){
+            $('.content').addClass('active').children('ul').hide();
+            $('#tab_fan').addClass('active').siblings('li').removeClass('active')
+            return
+        }
+        $('.content').removeClass('active')
+        $('#tab_fan').addClass('active').siblings('li').removeClass('active')
+        $('.con_fans').show().siblings('ul').hide()
+
+        var html = ''
+        fanArr.forEach(function(item,index){
+            $.ajax({
+                url:'/look_fan',
+                type:'get',
+                data:{id:item},
+                dataType:'json',
+                success:function(data){
+                    html += `<li>
+                                <a href="#">
+                                    <img src="../public/img/userhead/${data.data.avatar}" alt="">
+                                    <p>${data.data.nickname}</p>
+                                </a>
+                            </li>`
+                    $('.con_fans').html(html)
+                }
+            })
+        })
+    }
+
+
+
     //弹出(关闭)编辑资料框
     $("#modify_data").on('click',function(){
         $('.mask_modify').show()
@@ -102,7 +281,6 @@ $(function(){
         return psd_submit()
     })
 
-   
 
     //验证
     $('#old_psd').on('focus',function(){

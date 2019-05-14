@@ -39,10 +39,6 @@ function dateFormat(date, fmt) {
 
 //渲染首页
 router.get('/',function(req,res){
-    // var url:'http://v.juhe.cn/toutiao/index?type=&key=42afb22d691caeb3f2c0dec71163149a'
-    // url: 'http://apis.juhe.cn/simpleWeather/query?city=%E5%8C%97%E4%BA%AC&key=2940d3b6da99f3a0e39d7ef505a0a4fe',
-
-
     Article.find({},'_id pic_arr title category author_name comment_num release_time')
     .sort({'sort_time':-1}).limit(20).exec(function(err,_articles){
         if(err){
@@ -62,11 +58,29 @@ router.get('/',function(req,res){
                 case "shishang": item.category = '时尚';break;
             }
         })
-        
-        res.render('index.html',{
-            user:req.session.user,
-            articles:_articles
+        Article.find({},'_id pic_arr title read_num').sort({'read_num':-1}).limit(4).exec(function(err,_hotnews){
+            if(err){
+                res.status(500)
+                return
+            }
+            Article.find({'pic_arr.5':{$exists:true}},'_id title pic_arr')
+                .sort({'sort_time':-1})
+                .limit(10)
+                .exec(function(err,_hotpics){
+                if(err){
+                    res.status(500)
+                    return
+                }
+                res.render('index.html',{
+                    user:req.session.user,
+                    articles:_articles,
+                    hotnews:_hotnews,
+                    hotpics:_hotpics
+                })
+            })
+
         })
+       
     })
     
 })
@@ -129,17 +143,39 @@ router.get('/index',function(req,res){
             })
         })
         p2.then(function(toutiao){
-            res.render('index.html',{
-                user:req.session.user,
-                articles:_articles,
-                toutiao:toutiao
+            Article.find({},'_id pic_arr title read_num').sort({'read_num':-1}).limit(4).exec(function(err,_hotnews){
+                if(err){
+                    res.status(500)
+                    return
+                }
+                
+                Article.find({'pic_arr.5':{$exists:true}},'_id title pic_arr')
+                .sort({'sort_time':-1})
+                .limit(10)
+                .exec(function(err,_hotpics){
+                if(err){
+                    res.status(500)
+                    return
+                }
+                res.render('index.html',{
+                    user:req.session.user,
+                    articles:_articles,
+                    toutiao:toutiao,
+                    hotnews:_hotnews,
+                    hotpics:_hotpics
+                    })
+                })
+               
             })
+            
         })
     }
 
     
     
 })
+
+
 //渲染注册页面
 router.get('/register',function(req,res){
     res.render('register.html')
@@ -181,9 +217,14 @@ router.get('/login',function(req,res){
 })
 //登录请求
 router.post('/login',function(req,res){
-    User.findOne({
-        email:req.body.email
-    },function(err,user){
+    var status = {email:req.body.email}
+    if(req.body.identity == 0){
+        status = {
+            email:req.body.email,
+            status:0
+        }
+    }
+    User.findOne(status,function(err,user){
         if(err){
             return res.status(500).json({
                 err_code:500,
@@ -203,8 +244,8 @@ router.post('/login',function(req,res){
         res.status(200).json({
             err_code:0
         })
-        
     })
+    
 })
 //注销登录
 router.get('/logout',function(req,res){
@@ -342,6 +383,109 @@ router.post('/modify_psd',function(req,res){
         })
     })
 })
+//关注提交
+router.get('/attention',function(req,res){
+    if(req.query.status == 1){
+        User.updateOne({'_id':req.session.user._id},{$addToSet:{attentions:req.query.au_id}},function(err){
+            if(err){
+                res.status(500).json({err_code:500})
+                return
+            }
+            User.updateOne({'_id':req.query.au_id},{$addToSet:{fans:req.session.user._id}},function(err){
+                if(err){
+                    res.status(500).json({err_code:500})
+                    return
+                }
+                //更新session
+                User.findById(req.session.user._id,function(err,user){
+                    if(err){
+                        res.status(500).json({err_code:500})
+                        return
+                    }
+                    req.session.user = user
+                    res.status(200).json({err_code:0})
+                })
+            })
+        })
+    }
+    if(req.query.status == 0){
+        User.updateOne({'_id':req.session.user._id},{$pull:{attentions:req.query.au_id}},function(err){
+            if(err){
+                res.status(500).json({err_code:500})
+                return
+            }
+            User.updateOne({'_id':req.query.au_id},{$pull:{fans:req.session.user._id}},function(err){
+                if(err){
+                    res.status(500).json({err_code:500})
+                    return
+                }
+                //更新session
+                User.findById(req.session.user._id,function(err,user){
+                    if(err){
+                        res.status(500).json({err_code:500})
+                        return
+                    }
+                    req.session.user = user
+                    res.status(200).json({err_code:0})
+                })
+            })
+        })
+    }
+    
+})
+//查看我的关注
+router.get('/look_atten',function(req,res){
+    User.findOne({'_id':req.query.id},'_id nickname avatar',function(err,data){
+        if(err){
+            res.status(200).json({err_code:500})
+        }
+        res.status(200).json({data})
+    })
+})
+//查看我的粉丝
+router.get('/look_fan',function(req,res){
+    User.findOne({'_id':req.query.id},'_id nickname avatar',function(err,data){
+        if(err){
+            res.status(200).json({err_code:500})
+        }
+        res.status(200).json({data})
+    })
+})
+//查看我发布的文章
+router.get('/look_news',function(req,res){
+    Article.find({'author_id':req.session.user._id},'_id pic_arr title category comment_num release_time')
+    .sort({'sort_time':-1}).exec(function(err,_articles){
+        if(err){
+            res.status(500)
+            return
+        }
+        _articles.forEach(function(item){
+            switch(item.category){
+                case "shehui": item.category = '社会';break;
+                case "guonei": item.category = '国内';break;
+                case "guoji": item.category = '国际';break;
+                case "yule": item.category = '娱乐';break;
+                case "tiyu": item.category = '体育';break;
+                case "junshi": item.category = '军事';break;
+                case "keji": item.category = '科技';break;
+                case "caijing": item.category = '财经';break;
+                case "shishang": item.category = '时尚';break;
+            }
+        })
+        res.status(200).json({_articles})
+    })
+})
+//用户删除自己的文章
+router.get('/userDel_art',function(req,res){
+   Article.deleteOne({'_id':req.query.id},function(err){
+        if(err){
+            return res.status(500).json({err_code:5})
+        }
+        res.status(200).json({err_code:0})
+    })
+})
+
+
 
 
 //a.文章发布（同时）
@@ -409,11 +553,29 @@ router.get('/article',function(req,res){
             case "caijing": _articles.category = '财经';break;
             case "shishang": _articles.category = '时尚';break;
         }
-        res.render('article.html',{
-            article:_articles,
-            user:req.session.user
+        Article.find({},'_id pic_arr title read_num').sort({'read_num':-1}).limit(4).exec(function(err,_hotnews){
+            if(err){
+                res.status(500)
+                return
+            }
+            Article.find({'pic_arr.1':{$exists:true}},'_id title pic_arr')
+                .sort({'sort_time':-1})
+                .limit(10)
+                .exec(function(err,_hotpics){
+                if(err){
+                    res.status(500)
+                    return
+                }
+                res.render('article.html',{
+                    article:_articles,
+                    user:req.session.user,
+                    hotnews:_hotnews,
+                    hotpics:_hotpics
+                })
+            })
         })
     })
+    Article.updateOne({'_id':req.query.id.replace(/"/g,'')},{$inc:{read_num:1}},function(){})
 
 
 })
@@ -427,6 +589,96 @@ router.get('/author_articles',function(req,res){
     })
     
 })
+//文章搜索
+router.get('/search',function(req,res){
+    var _filter={
+        $or: [  // 多字段同时匹配
+          {title: {$regex: req.query.text}},
+        ]
+    }
+    Article.find(_filter,"title").limit(6)
+    .sort({read_num:1})
+    .exec(function(err,data){
+        if(err){
+            res.status(200).json({err_code:500})
+        }
+        res.status(200).json(data)
+    })
+})
+//文章搜索提交
+router.get('/search_sub',function(req,res){
+    Article.find({$or:[{title:{$regex:req.query.searchCon}}]},
+        "_id pic_arr title category author_name comment_num release_time")
+        .limit(10)
+        .sort({read_num:1})
+        .exec(function(err,data){
+            if(err){
+                res.status(200).json({err_code:500})
+            }
+            data.forEach(function(item){
+                switch(item.category){
+                    case "shehui": item.category = '社会';break;
+                    case "guonei": item.category = '国内';break;
+                    case "guoji": item.category = '国际';break;
+                    case "yule": item.category = '娱乐';break;
+                    case "tiyu": item.category = '体育';break;
+                    case "junshi": item.category = '军事';break;
+                    case "keji": item.category = '科技';break;
+                    case "caijing": item.category = '财经';break;
+                    case "shishang": item.category = '时尚';break;
+                }
+            })
+            res.status(200).json(data)
+        })
+})
+//文章页、个人页搜索提交
+router.get('/my_search',function(req,res){
+    Article.find({$or:[{title:{$regex:req.query.text}}]},
+        "_id pic_arr title category author_name comment_num release_time")
+        .limit(20)
+        .sort({read_num:1})
+        .exec(function(err,data){
+            if(err){
+                res.status(200).json({err_code:500})
+            }
+            data.forEach(function(item){
+                switch(item.category){
+                    case "shehui": item.category = '社会';break;
+                    case "guonei": item.category = '国内';break;
+                    case "guoji": item.category = '国际';break;
+                    case "yule": item.category = '娱乐';break;
+                    case "tiyu": item.category = '体育';break;
+                    case "junshi": item.category = '军事';break;
+                    case "keji": item.category = '科技';break;
+                    case "caijing": item.category = '财经';break;
+                    case "shishang": item.category = '时尚';break;
+                }
+            })
+            Article.find({},'_id pic_arr title read_num').sort({'read_num':-1}).limit(4).exec(function(err,_hotnews){
+                if(err){
+                    res.status(500)
+                    return
+                }
+                Article.find({'pic_arr.5':{$exists:true}},'_id title pic_arr')
+                    .sort({'sort_time':-1})
+                    .limit(10)
+                    .exec(function(err,_hotpics){
+                    if(err){
+                        res.status(500)
+                        return
+                    }
+                    res.render('index.html',{
+                        user:req.session.user,
+                        articles:data,
+                        hotnews:_hotnews,
+                        hotpics:_hotpics
+                    })
+                })
+    
+            })
+        })
+})
+
 
 
 //评论提交
@@ -521,7 +773,7 @@ router.get('/sys',function(req,res){
 })
 //加载用户管理数据
 router.get('/userSys',function(req,res){
-    User.find({},'_id nickname email password last_modified_time status',function(err,users){
+    User.find({status:1},'_id nickname email password last_modified_time status',function(err,users){
         if(err){
             return res.status(500).json({err_code:5})
         }
@@ -540,3 +792,39 @@ router.get('/delete_user',function(req,res){
 
 
 module.exports = router
+
+
+
+
+
+// var local = require('./models/local')
+
+// app.get('/local/repeat', function (req, res) {
+// var keyword = req.query.keyword // 获取查询的字段
+
+// var _filter={
+//    $or: [  // 多字段同时匹配
+//      {cn: {$regex: keyword}},
+//      {key: {$regex: keyword, $options: '$i'}}, //  $options: '$i' 忽略大小写
+//      {en: {$regex: keyword, $options: '$i'}}
+//    ]
+//  }
+//  var count = 0
+//  local.count(_filter, function (err, doc) { // 查询总条数（用于分页）
+//    if (err) {
+//      console.log(err)
+//    } else {
+//      count = doc
+//    }
+//  })
+
+//  local.find(_filter).limit(10) // 最多显示10条
+//    .sort({'_id': -1}) // 倒序
+//    .exec(function (err, doc) { // 回调
+//      if (err) {
+//        console.log(err)
+//      } else {
+//        res.json({code: 0, data: doc, count: count})
+//      }
+//    })
+// })

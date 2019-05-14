@@ -94,9 +94,6 @@ $(function(){
         });
     });
 
-
-
-
     //添加多个文章图片
     var pic_num = 0
     function addpic(){
@@ -155,7 +152,6 @@ $(function(){
     }
     addpic()
     
-
     //上传文章
     $('#article_form').on("submit",function(e){
         e.preventDefault()
@@ -239,4 +235,7 @@ $(function(){
 
   
     }
+
+
+    
 });

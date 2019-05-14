@@ -4,6 +4,22 @@ body{
     position: fixed;
     background: url('../img/sysimages/login_bg2.png') no-repeat center top;
 }
+
+/* 选择身份 */
+#identity{
+    position: absolute;
+    left: 50%;
+    top: 207px;
+    margin-left: -175px;
+    outline: none;
+    border: 2px #ccc solid;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.25);
+    width: 65px;
+    height: 30px;
+}
+
+/* */
 .toindex{
     color: red;
     letter-spacing: 5px;
