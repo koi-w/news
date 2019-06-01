@@ -1,4 +1,19 @@
 $(function(){
+
+    //统计关注数，粉丝数
+    var attenArr = $('#atten').text().replace(/\[|\]|\"/g,'').split(',')
+    var fanArr = $('#fan').text().replace(/\[|\]|\"/g,'').split(',')
+    if(attenArr[0].length === 0){
+        $('#atten').text('0')
+    }else{
+        $('#atten').text(attenArr.length)
+    }
+    if(fanArr[0].length === 0){
+        $('#fan').text('0')
+    }else{
+        $('#fan').text(fanArr.length)
+    }
+
     //clo1 菜单
     $("#clo1-menu>dd").each(function(index,ele){
         $(ele).on("mouseenter",function(){

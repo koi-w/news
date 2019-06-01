@@ -1,5 +1,19 @@
 $(function(){
 
+    //统计关注数，粉丝数
+    var attenArr = $('#atten').text().replace(/\[|\]|\"/g,'').split(',')
+    var fanArr = $('#fan').text().replace(/\[|\]|\"/g,'').split(',')
+    if(attenArr[0].length === 0){
+        $('#atten').text('0')
+    }else{
+        $('#atten').text(attenArr.length)
+    }
+    if(fanArr[0].length === 0){
+        $('#fan').text('0')
+    }else{
+        $('#fan').text(fanArr.length)
+    }
+
     //查询我的文章
     function look_news(){
         var html = ''
@@ -80,6 +94,7 @@ $(function(){
             })
         }
     })
+
 
     //查看我的关注
     $('#atten_cli').on('click',look_atten)

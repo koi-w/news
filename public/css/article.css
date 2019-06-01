@@ -262,6 +262,21 @@
 .author dt{
     height: 80px;
     border-bottom: 1px solid #ddd;
+    position: relative;
+}
+.author dt p{
+    width: 115px;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    font-size: 13px;
+    font-weight: 400;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-align: center;
 }
 .author-avatar{
     float: left;

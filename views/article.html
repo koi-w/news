@@ -46,7 +46,7 @@
                 <i></i>
             </ul>
         </div>
-        <label for="" class="fr">发布</label>
+        <label for="" class="fr"><a href="/" style="color:#fff">发布</a></label>
         {{ else }}
         <a href="/login" class="article_login fr">登录</a>
         {{ /if }}
@@ -129,6 +129,9 @@
                             <button login="0" id="concern"></button>
                             {{ /if }}
                         </div>
+                        {{ if user }}
+                        <p>{{user.bio}}</p>
+                        {{ /if }}
                     </dt>
                     <input type="hidden" id="author_articles" value="{{ article.author_id }}">
                     {{ each author_articles }}

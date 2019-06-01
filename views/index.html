@@ -16,6 +16,7 @@
     <div id="top" class="top">
         <span>成都：15-30 ℃&nbsp;&nbsp;&nbsp;多云</span>
         {{ if user }}
+        <a href="#" class='fr'>下载app</a>
         {{ else }}
         <a href="/login" class="fr">登录</a>
         {{ /if }}
@@ -268,9 +269,9 @@
                         {{ /if }}
                         <div class="title">
                             <a href="/article?id={{ $value._id }}" target="_blank">{{ $value.title }}</a>
-                            <a href="#">{{ $value.category }}</a>&nbsp;
-                            <a href="#">{{ $value.author_name }}</a>&nbsp;·
-                            <a href="#">{{ $value.comment_num }}&nbsp;评论</a>&nbsp;·
+                            <a href="javascript:void(0)">{{ $value.category }}</a>&nbsp;
+                            <a href="javascript:void(0)">{{ $value.author_name }}</a>&nbsp;·
+                            <a href="javascript:void(0)">{{ $value.comment_num }}&nbsp;评论</a>&nbsp;·
                             <span>{{ $value.release_time }}</span>
                         </div>
                     </li>
@@ -284,8 +285,8 @@
                         {{ /if }}
                         <div class="title">
                             <a href="{{ $value.url }}" target="_blank">{{ $value.title }}</a>
-                            <a href="#">{{ $value.category }}</a>&nbsp;
-                            <a href="#">{{ $value.author_name }}</a>&nbsp;·
+                            <a href="javascript:void(0)">{{ $value.category }}</a>&nbsp;
+                            <a href="javascript:void(0)">{{ $value.author_name }}</a>&nbsp;·
                             <span>{{ $value.date }}</span>
                         </div>
                     </li>

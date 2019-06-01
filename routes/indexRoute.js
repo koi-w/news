@@ -129,7 +129,7 @@ router.get('/index',function(req,res){
     function callback(_articles){
         var key = '42afb22d691caeb3f2c0dec71163149a'
         var options = {
-            method: 'get',
+            method: 'post',
             url: 'http://v.juhe.cn/toutiao/index?type='+ category + '&key=' + key,
             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         };
@@ -780,6 +780,42 @@ router.get('/userSys',function(req,res){
         res.status(200).json(users)
     })
 })
+//加载新闻管理数据
+router.get('/newsSys',function(req,res){
+    Article.find({},'_id author_name title category release_time comment_num read_num')
+            .sort({sort_time:-1})
+            .exec(function(err,datas){
+        if(err){
+            return res.status(500).json({err_code:5})
+        }
+        datas.forEach(function(item){
+            switch(item.category){
+                case "shehui": item.category = '社会';break;
+                case "guonei": item.category = '国内';break;
+                case "guoji": item.category = '国际';break;
+                case "yule": item.category = '娱乐';break;
+                case "tiyu": item.category = '体育';break;
+                case "junshi": item.category = '军事';break;
+                case "keji": item.category = '科技';break;
+                case "caijing": item.category = '财经';break;
+                case "shishang": item.category = '时尚';break;
+            }
+        })
+        res.status(200).json(datas)
+    })
+})
+//加载评论管理数据
+router.get('/commentSys',function(req,res){
+    Comment.find({},'_id article_id user_name comment_content comment_time zan_num replay_num')
+            .sort({sort_time:-1})
+            .exec(function(err,datas){
+        if(err){
+            return res.status(500).json({err_code:5})
+        }
+        res.status(200).json(datas)
+    })
+})
+
 //删除用户
 router.get('/delete_user',function(req,res){
     User.deleteOne({_id:req.query.id},function(err){
@@ -788,6 +824,74 @@ router.get('/delete_user',function(req,res){
         }
         res.status(200).json({err_code:0})
     })
+})
+//删除新闻
+router.get('/delete_news',function(req,res){
+    Article.deleteOne({_id:req.query.id},function(err){
+        if(err){
+            return res.status(500).json({err_code:5})
+        }
+        res.status(200).json({err_code:0})
+    })
+})
+//删除评论
+router.get('/delete_comment',function(req,res){
+    Comment.deleteOne({_id:req.query.id},function(err){
+        if(err){
+            return res.status(500).json({err_code:5})
+        }
+        res.status(200).json({err_code:0})
+    })
+})
+
+
+//审核文章
+router.get('/edit-news',function(req,res){
+    Article.findOne({_id:req.query.id})
+        .exec(function (err, _articles) {
+            if (err) {
+                return res.status(500).json({
+                    err_code: 5
+                })
+            }
+            _articles.content = '<p>' + _articles.content.replace(/(\r\n)|(\\+r\\+n)/g,'</p><p>') + '</p>'
+            switch(_articles.category){
+                case "shehui": _articles.category = '社会';break;
+                case "guonei": _articles.category = '国内';break;
+                case "guoji": _articles.category = '国际';break;
+                case "yule": _articles.category = '娱乐';break;
+                case "tiyu": _articles.category = '体育';break;
+                case "junshi": _articles.category = '军事';break;
+                case "keji": _articles.category = '科技';break;
+                case "caijing": _articles.category = '财经';break;
+                case "shishang": _articles.category = '时尚';break;
+            }
+            res.status(200).json(_articles)
+        })
+})
+//审核评论
+router.get('/edit-comment',function(req,res){
+    Comment.findOne({_id:req.query.id})
+        .exec(function (err, comment) {
+            if (err) {
+                return res.status(500).json({
+                    err_code: 5
+                })
+            }
+            res.status(200).json(comment)
+        })
+})
+//审核用户
+router.get('/edit-users',function(req,res){
+    User.findOne({_id:req.query.id})
+        .exec(function (err, comment) {
+            if (err) {
+                return res.status(500).json({
+                    err_code: 5
+                })
+            }
+            res.status(200).json(comment)
+        })
 })
 
 
